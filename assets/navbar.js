@@ -122,3 +122,32 @@ export function navbarScript() {
   });
 }
 
+// Lógica para el navbar que aparece y desaparece al hacer scroll
+export function stickyNavScript() {
+    const header = document.querySelector('.site-header');
+    if (!header) return;
+
+    let lastScrollTop = 0;
+    const delta = 5; // Pequeño margen para evitar activaciones erráticas
+    const navbarHeight = header.offsetHeight;
+
+    window.addEventListener('scroll', () => {
+        const st = window.scrollY;
+
+        // Asegurarse de que el scroll sea mayor que la altura del navbar
+        if (Math.abs(lastScrollTop - st) <= delta) return;
+
+        if (st > lastScrollTop && st > navbarHeight) {
+            // Scroll hacia abajo -> Ocultar navbar
+            header.classList.add('header-hidden');
+        } else {
+            // Scroll hacia arriba -> Mostrar navbar
+            if (st + window.innerHeight < document.documentElement.scrollHeight) {
+                header.classList.remove('header-hidden');
+            }
+        }
+
+        lastScrollTop = st;
+    });
+}
+

@@ -10,7 +10,7 @@ body {
     background-color: #f1faee;
     color: #1d3557;
     margin: 0;
-    padding-top: 80px; /* Ajuste para la barra de navegación fija */
+    padding-top: 180px; /* Espacio para el header fijo inicial */
 }
 
 h1, h2, h3 {
@@ -91,13 +91,22 @@ h2 {
    ESTILOS NAVBAR
    ==================================================== */
 .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(236, 57, 72, 0.8); /* Rojo claro tipo cristal */
+    background: rgba(236, 57, 72, 0.8);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 4px 24px rgba(44, 106, 79, 0.10);
+    transition: transform 0.4s ease-in-out; /* Transición para ocultar/mostrar */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transform: translateY(0); /* Visible por defecto */
+}
+
+/* Nueva clase que se añadirá con JavaScript al bajar */
+.site-header.header-hidden {
+    transform: translateY(-100%); /* Oculta el header hacia arriba */
 }
 
 .header-content {

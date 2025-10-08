@@ -48,11 +48,12 @@
   <div id="footer"></div>
 
   <script type="module">
-      import { renderNavbar, navbarScript } from './assets/navbar.js';
+      import { renderNavbar, navbarScript, stickyNavScript } from './assets/navbar.js';
       import { renderFooter } from './assets/footer.js';
       document.getElementById('navbar').innerHTML = renderNavbar();
       document.getElementById('footer').innerHTML = renderFooter();
       navbarScript();
+      stickyNavScript();
   </script>
 
   <audio id="christmas-audio" loop preload="auto" style="display:none;">

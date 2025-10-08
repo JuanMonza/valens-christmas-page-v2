@@ -81,11 +81,12 @@
   <div id="footer"></div>
 
   <script type="module">
-        import { renderNavbar, navbarScript } from './assets/navbar.js';
+        import { renderNavbar, navbarScript, stickyNavScript } from './assets/navbar.js';
         import { renderFooter } from './assets/footer.js';
         document.getElementById('navbar').innerHTML = renderNavbar();
         document.getElementById('footer').innerHTML = renderFooter();
         navbarScript();
+        stickyNavScript();
     </script>
 
     <audio id="christmas-audio" loop preload="auto" style="display:none;">
@@ -96,87 +97,68 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const heightInput = document.getElementById('tree_height');
-        const heightDisplay = document.getElementById('height_display');
-        const treeOptions = document.querySelectorAll('.tree-option');
-        const results = document.getElementById('results');
-        const calculateBtn = document.getElementById('calculate_btn');
+      const treeHeightSlider = document.getElementById('tree_height');
+      const heightDisplay = document.getElementById('height_display');
+      const calculateBtn = document.getElementById('calculate_btn');
+      const resultsDiv = document.getElementById('results');
+      const treeOptions = document.querySelectorAll('.tree-option input');
 
-        // Asignar evento al botón
-        calculateBtn.addEventListener('click', calculateOrnaments);
+      // --- Lógica para el llenado del slider ---
+      function updateSliderFill() {
+        const min = parseFloat(treeHeightSlider.min);
+        const max = parseFloat(treeHeightSlider.max);
+        const val = parseFloat(treeHeightSlider.value);
+        const percentage = ((val - min) * 100) / (max - min);
+        
+        // Aplica el estilo para el efecto de llenado
+        treeHeightSlider.style.setProperty('--slider-fill-percentage', `${percentage}%`);
+        
+        // Actualiza el texto del metraje
+        heightDisplay.textContent = `${val.toFixed(1)}m`;
+      }
 
-        // Actualizar display de altura
-        heightInput.addEventListener('input', function () {
-            heightDisplay.textContent = parseFloat(this.value).toFixed(1);
+      // Llama a la función una vez al cargar para establecer el estado inicial
+      updateSliderFill();
+
+      // Añade el listener para actualizar en cada movimiento
+      treeHeightSlider.addEventListener('input', updateSliderFill);
+      // --- Fin de la lógica del slider ---
+
+      // Lógica para seleccionar tipo de árbol
+      treeOptions.forEach(option => {
+        option.addEventListener('change', function() {
+          // Este código es para la selección visual, si es necesario
         });
+      });
 
-        // Efecto de selección en las opciones de árbol
-        treeOptions.forEach(option => {
-            option.addEventListener('click', function () {
-                treeOptions.forEach(opt => opt.classList.remove('selected'));
-                this.classList.add('selected');
-            });
-        });
+      calculateBtn.addEventListener('click', function () {
+        const height = parseFloat(treeHeightSlider.value);
+        const type = document.querySelector('input[name="tree_type"]:checked').value;
 
-        // Función de cálculo
-        function calculateOrnaments() {
-            const height = parseFloat(heightInput.value);
-            const type = document.querySelector('input[name="tree_type"]:checked').value;
-
-            // Factores de multiplicación según el tipo (basados en guías profesionales)
-            const factors = {
-                slim: 0.75,    // Árbol delgado requiere 25% menos adornos
-                standard: 1,    // Árbol clásico como base
-                dense: 1.35    // Árbol frondoso requiere 35% más adornos
-            };
-
-            // Cálculos profesionales basados en estándares de decoración
-            // Para un árbol estándar:
-            // - 40 esferas por metro de altura
-            // - 12 moños por metro de altura
-            // - 5 metros de guirnalda por metro de altura
-            // - 12 metros de luces LED por metro de altura (100 bombillas por metro)
-            const baseOrnaments = Math.round(40 * height * factors[type]);
-            const baseBows = Math.round(12 * height * factors[type]);
-            const baseGarland = Math.round(5 * height * factors[type]);
-
-            // Cálculo de luces LED
-            // Se multiplica por π para considerar el perímetro del árbol en cada vuelta
-            // y por el número de vueltas necesarias para una buena cobertura
-            const baseLights = Math.round(12 * height * factors[type]);
-            const numBulbs = baseLights * 100; // 100 bombillas por metro
-
-            // Animación de resultados
-            results.classList.add('show');
-            setTimeout(() => {
-                // Animación de números
-                animateNumber('res_ornaments', baseOrnaments);
-                animateNumber('res_bows', baseBows);
-                animateNumber('res_garland', baseGarland);
-                animateNumber('res_lights', baseLights);
-                document.getElementById('res_lights_bulbs').textContent = `(${numBulbs} bombillas)`;
-            }, 100);
+        let multiplier;
+        if (type === 'slim') {
+          multiplier = 0.8;
+        } else if (type === 'standard') {
+          multiplier = 1;
+        } else { // dense
+          multiplier = 1.3;
         }
 
-        // Función para animar números
-        function animateNumber(elementId, final) {
-            const element = document.getElementById(elementId);
-            const duration = 1000;
-            const start = 0;
-            const increment = final / (duration / 16);
-            let current = start;
+        // Fórmulas de cálculo
+        const ornaments = Math.round((height * 25) * multiplier);
+        const bows = Math.round((height * 10) * multiplier);
+        const garland = (height * 3).toFixed(1);
+        const lights = Math.round(height * 100);
 
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= final) {
-                    clearInterval(timer);
-                    element.textContent = final;
-                } else {
-                    element.textContent = Math.round(current);
-                }
-            }, 16);
-        }
+        document.getElementById('res_ornaments').textContent = ornaments;
+        document.getElementById('res_bows').textContent = bows;
+        document.getElementById('res_garland').textContent = `${garland}m`;
+        document.getElementById('res_lights').textContent = lights;
+
+        resultsDiv.style.opacity = 1; // Muestra los resultados
+      });
     });
   </script>
+
 </body>
 </html>
