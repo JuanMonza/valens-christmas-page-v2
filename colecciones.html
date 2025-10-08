@@ -16,7 +16,7 @@
       <p>Cada colección está diseñada para contar una historia y crear una atmósfera única. Encuentra la que mejor se adapte a tu personalidad.</p>
 
       <div class="collection-card">
-        <img src="medios/coleccion_rojo_dorado.jpg" alt="Colección Clásica en Rojo y Dorado">
+        <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57 (1).jpeg" alt="Colección Clásica en Rojo y Dorado">
         <div class="collection-info">
           <h3>Colección "Tradición Dorada"</h3>
           <p>La combinación atemporal de rojo y dorado para una Navidad clásica, elegante y llena de calidez familiar. Perfecta para quienes aman las tradiciones.</p>
@@ -25,7 +25,7 @@
       </div>
 
       <div class="collection-card">
-        <img src="medios/coleccion_blanco_plata.jpg" alt="Colección Elegancia Invernal en Blanco y Plata">
+        <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57 (2).jpeg" alt="Colección Elegancia Invernal en Blanco y Plata">
         <div class="collection-info">
           <h3>Colección "Elegancia Invernal"</h3>
           <p>El blanco, la plata y los cristales se unen para crear un ambiente sofisticado y mágico, inspirado en los paisajes nevados.</p>
@@ -34,7 +34,7 @@
       </div>
 
       <div class="collection-card">
-        <img src="medios/coleccion_champagne.jpg" alt="Colección Champagne Dreams">
+        <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57 (3).jpeg" alt="Colección Champagne Dreams">
         <div class="collection-info">
           <h3>Colección "Champagne Dreams"</h3>
           <p>Tonos champagne, rosados y cobrizos para una decoración moderna, glamurosa y llena de luz. Ideal para un estilo chic y contemporáneo.</p>
@@ -44,12 +44,20 @@
     </section>
   </main>
   <div id="footer"></div>
+
   <script type="module">
-    import { renderNavbar, navbarScript } from './assets/navbar.js';
-    import { renderFooter } from './assets/footer.js';
-    document.getElementById('navbar').innerHTML = renderNavbar();
-    document.getElementById('footer').innerHTML = renderFooter();
-    navbarScript();
+      import { renderNavbar, navbarScript } from './assets/navbar.js';
+      import { renderFooter } from './assets/footer.js';
+      document.getElementById('navbar').innerHTML = renderNavbar();
+      document.getElementById('footer').innerHTML = renderFooter();
+      navbarScript();
   </script>
+
+  <audio id="christmas-audio" loop preload="auto" style="display:none;">
+      <source src="medios/christmas-party-time-249613.mp3" type="audio/mpeg">
+  </audio>
+  <script src="assets/music-persistence.js"></script>
+  <script src="assets/snow-effect.js"></script>
+
 </body>
 </html>

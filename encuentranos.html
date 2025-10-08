@@ -35,12 +35,20 @@
     </section>
   </main>
   <div id="footer"></div>
+
   <script type="module">
-    import { renderNavbar, navbarScript } from './assets/navbar.js';
-    import { renderFooter } from './assets/footer.js';
-    document.getElementById('navbar').innerHTML = renderNavbar();
-    document.getElementById('footer').innerHTML = renderFooter();
-    navbarScript();
+      import { renderNavbar, navbarScript } from './assets/navbar.js';
+      import { renderFooter } from './assets/footer.js';
+      document.getElementById('navbar').innerHTML = renderNavbar();
+      document.getElementById('footer').innerHTML = renderFooter();
+      navbarScript();
   </script>
+
+  <audio id="christmas-audio" loop preload="auto" style="display:none;">
+      <source src="medios/christmas-party-time-249613.mp3" type="audio/mpeg">
+  </audio>
+  <script src="assets/music-persistence.js"></script>
+  <script src="assets/snow-effect.js"></script>
+
 </body>
 </html>

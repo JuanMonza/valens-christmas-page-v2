@@ -38,7 +38,7 @@
                     </video>
                 </div>
                 <div class="hero-content">
-                    <audio id="christmas-audio" preload="auto" loop style="display:none;">
+                    <audio id="christmas-audio" autoplay muted loop preload="auto" style="display:none;">
                         <source src="medios/christmas-party-time-249613.mp3" type="audio/mpeg">
                         Tu navegador no soporta audio HTML5 o falta el archivo.
                     </audio>
@@ -85,41 +85,45 @@
                     <p style="max-width:700px;margin:0 auto 2rem;text-align:center;">Descubre las colecciones y
                         tendencias que tenemos para ti. Cada categoría está pensada para llenar tu hogar de magia
                         navideña.</p>
-                    <div class="section-images">
-                        <img src="medios/WhatsApp Image 2025-10-07 at 15.56.33.jpeg" alt="Categoría 1"
-                            class="section-img">
-                        <img src="medios/WhatsApp Image 2025-10-07 at 15.56.33 (1).jpeg" alt="Categoría 2"
-                            class="section-img">
-                    </div>
+                    <a href="colecciones.html" style="text-decoration: none; color: inherit; display: block;">
+                        <div class="section-images">
+                            <img src="medios/WhatsApp Image 2025-10-07 at 15.56.33.jpeg" alt="Categoría 1"
+                                class="section-img">
+                            <img src="medios/WhatsApp Image 2025-10-07 at 15.56.33 (1).jpeg" alt="Categoría 2"
+                                class="section-img">
+                        </div>
+                    </a>
                 </section>
 
-
-                <section id="magia" class="content-section fade-in">
-                    <h2>Toda la Magia y el amor de la navidad</h2>
-                    <p style="max-width: 800px; margin: 0 auto; line-height: 1.8;">
-                        Con emoción te presentamos las nuevas colecciones navideñas 2025. En cada pieza encontrarás un
-                        destello de felicidad diseñado para llenar tu hogar con la chispa de las fiestas. Con
-                        <strong>Valens Christmas</strong>, no solo llevas decoración, llevas un pedacito de alegría y
-                        amor que hará que esta temporada sea inolvidable.
-                    </p>
-                    <div class="section-images">
-                        <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57 (1).jpeg" alt="Navidad 1"
-                            class="section-img">
-                        <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57 (2).jpeg" alt="Navidad 2"
-                            class="section-img">
-                    </div>
-                </section>
-
+                <a href="tendencias.html" style="text-decoration: none; color: inherit; display: block;">
+                    <section id="magia" class="content-section fade-in">
+                        <h2>Toda la Magia y el amor de la navidad</h2>
+                        <p style="max-width: 800px; margin: 0 auto; line-height: 1.8;">
+                            Con emoción te presentamos las nuevas colecciones navideñas 2025. En cada pieza encontrarás un
+                            destello de felicidad diseñado para llenar tu hogar con la chispa de las fiestas. Con
+                            <strong>Valens Christmas</strong>, no solo llevas decoración, llevas un pedacito de alegría y
+                            amor que hará que esta temporada sea inolvidable.
+                        </p>
+                        <div class="section-images">
+                            <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57 (1).jpeg" alt="Navidad 1"
+                                class="section-img">
+                            <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57 (2).jpeg" alt="Navidad 2"
+                                class="section-img">
+                        </div>
+                    </section>
+                </a>
 
                 <section id="productos-destacados" class="content-section fade-in">
                     <h2>Productos Destacados</h2>
                     <p>Los favoritos de esta temporada para un hogar lleno de magia.</p>
-                    <div class="section-images">
-                        <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57 (3).jpeg" alt="Producto 1"
-                            class="section-img">
-                        <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57.jpeg" alt="Producto 2"
-                            class="section-img">
-                    </div>
+                    <a href="inspiracion.html" style="text-decoration: none; color: inherit; display: block;">
+                        <div class="section-images">
+                            <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57 (3).jpeg" alt="Producto 1"
+                                class="section-img">
+                            <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57.jpeg" alt="Producto 2"
+                                class="section-img">
+                        </div>
+                    </a>
                 </section>
 
 
@@ -144,11 +148,13 @@
         <h2>Lo que dicen nuestros clientes</h2>
         <div class="card-grid">
             <blockquote class="testimonial-card">
+                <i class="fas fa-user testimonial-icon"></i>
                 "Hermoso como siempre todo lo que ustedes traen para la mejor época del año. Es delicado y de calidad.
                 Todo lo que uno busca."
                 <span class="testimonial-author">— Nohely Arrieche</span>
             </blockquote>
             <blockquote class="testimonial-card">
+                <i class="fas fa-user testimonial-icon"></i>
                 "Bello! Lo mejor de lo mejor en Valens Christmas. ¡Quedó precioso!"
                 <span class="testimonial-author">— Silvia Zurita</span>
             </blockquote>
@@ -284,6 +290,16 @@
                     
                     audio.loop = true;
 
+                    // Guardar estado de la música antes de navegar a otra página
+                    window.addEventListener('beforeunload', () => {
+                        const musicState = {
+                            time: audio.currentTime,
+                            paused: audio.paused,
+                            muted: audio.muted
+                        };
+                        sessionStorage.setItem('musicState', JSON.stringify(musicState));
+                    });
+
                     function updatePlayIcon() {
                         iconPlay.style.display = audio.paused ? 'block' : 'none';
                         iconPause.style.display = audio.paused ? 'none' : 'block';
@@ -310,8 +326,22 @@
                     audio.addEventListener('pause', updatePlayIcon);
                     audio.addEventListener('volumechange', updateMuteIcon);
                     
+                    // Restaurar estado o iniciar en la primera interacción
+                    const savedState = JSON.parse(sessionStorage.getItem('musicState'));
+                    if (savedState) {
+                        audio.currentTime = savedState.time;
+                        audio.muted = savedState.muted;
+                        if (!savedState.paused) {
+                            audio.play().catch(e => console.warn("La reproducción automática fue bloqueada, se requiere interacción.", e));
+                        }
+                        updatePlayIcon();
+                        updateMuteIcon();
+                    }
+
                     const startMusicOnInteraction = () => {
-                        if (audio.paused) {
+                        // Si el audio está pausado por la política de autoplay, lo reactivamos
+                        if (audio.paused && (audio.hasAttribute('autoplay') || (savedState && !savedState.paused))) {
+                            audio.muted = false;
                             audio.play().catch(()=>{});
                         }
                         document.body.removeEventListener('click', startMusicOnInteraction);
@@ -404,59 +434,10 @@
                 }
             })();
 
-            // ================== EFECTO DE NIEVE ==================
-            (function initSnowEffect() {
-                const canvas = document.getElementById('snow-canvas');
-                if (!canvas) return;
-                const ctx = canvas.getContext('2d');
-                let width = window.innerWidth;
-                let height = window.innerHeight;
-                canvas.width = width;
-                canvas.height = height;
-                const numFlakes = 100;
-                const flakes = [];
-                function random(min, max) { return Math.random() * (max - min) + min; }
-                for (let i = 0; i < numFlakes; i++) {
-                    flakes.push({
-                        x: random(0, width),
-                        y: random(0, height),
-                        radius: random(1, 3.5),
-                        speed: random(1, 3),
-                        opacity: random(0.5, 1)
-                    });
-                }
-                function drawFlakes() {
-                    ctx.clearRect(0, 0, width, height);
-                    ctx.fillStyle = `rgba(255, 255, 255, ${flakes[0].opacity})`;
-                    ctx.beginPath();
-                    for (let i = 0; i < numFlakes; i++) {
-                        const flake = flakes[i];
-                        ctx.moveTo(flake.x, flake.y);
-                        ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2, true);
-                    }
-                    ctx.fill();
-                    moveFlakes();
-                }
-                function moveFlakes() {
-                    for (let i = 0; i < numFlakes; i++) {
-                        const flake = flakes[i];
-                        flake.y += flake.speed;
-                        if (flake.y > height) {
-                            flake.x = random(0, width);
-                            flake.y = -5;
-                        }
-                    }
-                }
-                setInterval(drawFlakes, 30);
-                window.addEventListener('resize', () => {
-                    width = window.innerWidth;
-                    height = window.innerHeight;
-                    canvas.width = width;
-                    canvas.height = height;
-                });
-            })();
         });
     </script>
-</body>
+    <script src="assets/music-persistence.js"></script>
+    <script src="assets/snow-effect.js"></script>
 
+</body>
 </html>

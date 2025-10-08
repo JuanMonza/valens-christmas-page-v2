@@ -17,17 +17,17 @@
       
       <div class="gallery">
         <div class="gallery-item">
-          <img src="medios/tendencia1.jpg" alt="Tendencia de Navidad 1">
+          <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57.jpeg" alt="Tendencia de Navidad 1">
           <h3>Bosque Encantado</h3>
           <p>Tonos tierra, maderas naturales y detalles de animales del bosque para una Navidad rústica y acogedora.</p>
         </div>
         <div class="gallery-item">
-          <img src="medios/tendencia2.jpg" alt="Tendencia de Navidad 2">
+          <img src="medios/WhatsApp Image 2025-10-07 at 15.56.33.jpeg" alt="Tendencia de Navidad 2">
           <h3>Cielo Estrellado</h3>
           <p>Azules profundos, platas y dorados que evocan una noche invernal mágica y elegante.</p>
         </div>
         <div class="gallery-item">
-          <img src="medios/tendencia3.jpg" alt="Tendencia de Navidad 3">
+          <img src="medios/WhatsApp Image 2025-10-07 at 15.56.34.jpeg" alt="Tendencia de Navidad 3">
           <h3>Dulce Navidad</h3>
           <p>Colores pastel, adornos con formas de dulces y un toque divertido para una celebración llena de fantasía.</p>
         </div>
@@ -35,12 +35,20 @@
     </section>
   </main>
   <div id="footer"></div>
+
   <script type="module">
-    import { renderNavbar, navbarScript } from './assets/navbar.js';
-    import { renderFooter } from './assets/footer.js';
-    document.getElementById('navbar').innerHTML = renderNavbar();
-    document.getElementById('footer').innerHTML = renderFooter();
-    navbarScript();
+      import { renderNavbar, navbarScript } from './assets/navbar.js';
+      import { renderFooter } from './assets/footer.js';
+      document.getElementById('navbar').innerHTML = renderNavbar();
+      document.getElementById('footer').innerHTML = renderFooter();
+      navbarScript();
   </script>
+
+  <audio id="christmas-audio" loop preload="auto" style="display:none;">
+      <source src="medios/christmas-party-time-249613.mp3" type="audio/mpeg">
+  </audio>
+  <script src="assets/music-persistence.js"></script>
+  <script src="assets/snow-effect.js"></script>
+
 </body>
 </html>

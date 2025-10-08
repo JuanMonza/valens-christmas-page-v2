@@ -16,22 +16,30 @@
       <p>Deja que estas imágenes te inspiren para crear tu propia obra de arte navideña. Combina, crea y comparte la magia.</p>
       
       <div class="inspiration-gallery">
-        <img src="medios/inspiracion1.jpg" alt="Árbol de Navidad decorado con estilo rústico">
-        <img src="medios/inspiracion2.jpg" alt="Mesa de Navidad elegantemente servida">
-        <img src="medios/inspiracion3.jpg" alt="Detalle de guirnalda en una chimenea">
-        <img src="medios/inspiracion4.jpg" alt="Rincón de lectura con ambiente navideño">
-        <img src="medios/inspiracion5.jpg" alt="Decoración exterior con luces de Navidad">
-        <img src="medios/inspiracion6.jpg" alt="Centro de mesa navideño con velas y piñas">
+        <img src="medios/WhatsApp Image 2025-10-07 at 15.55.58.jpeg" alt="Árbol de Navidad decorado con estilo rústico">
+        <img src="medios/WhatsApp Image 2025-10-07 at 15.56.34 (1).jpeg" alt="Mesa de Navidad elegantemente servida">
+        <img src="medios/WhatsApp Image 2025-10-07 at 15.56.34 (2).jpeg" alt="Detalle de guirnalda en una chimenea">
+        <img src="medios/WhatsApp Image 2025-10-07 at 15.56.34 (3).jpeg" alt="Rincón de lectura con ambiente navideño">
+        <img src="medios/WhatsApp Image 2025-10-07 at 15.56.35.jpeg" alt="Decoración exterior con luces de Navidad">
+        <img src="medios/WhatsApp Image 2025-10-07 at 15.55.33.jpeg" alt="Centro de mesa navideño con velas y piñas">
       </div>
     </section>
   </main>
   <div id="footer"></div>
+
   <script type="module">
-    import { renderNavbar, navbarScript } from './assets/navbar.js';
-    import { renderFooter } from './assets/footer.js';
-    document.getElementById('navbar').innerHTML = renderNavbar();
-    document.getElementById('footer').innerHTML = renderFooter();
-    navbarScript();
+      import { renderNavbar, navbarScript } from './assets/navbar.js';
+      import { renderFooter } from './assets/footer.js';
+      document.getElementById('navbar').innerHTML = renderNavbar();
+      document.getElementById('footer').innerHTML = renderFooter();
+      navbarScript();
   </script>
+
+  <audio id="christmas-audio" loop preload="auto" style="display:none;">
+      <source src="medios/christmas-party-time-249613.mp3" type="audio/mpeg">
+  </audio>
+  <script src="assets/music-persistence.js"></script>
+  <script src="assets/snow-effect.js"></script>
+
 </body>
 </html>

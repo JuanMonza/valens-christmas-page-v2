@@ -4,7 +4,7 @@ export function renderNavbar() {
     <header id="masthead" class="site-header">
       <div class="header-content">
         <div class="site-branding">
-          <a href="front-page-static.html" class="custom-logo-link" rel="home" aria-label="Ir al inicio">
+          <a href="index.html" class="custom-logo-link" rel="home" aria-label="Ir al inicio">
             <img src="medios/logo valents.PNG" alt="Valens Christmas" class="custom-logo">
           </a>
         </div>
@@ -13,7 +13,7 @@ export function renderNavbar() {
             <span class="hamburger"></span>
           </button>
           <ul id="primary-menu" class="main-menu" role="menubar">
-            <li role="none"><a role="menuitem" href="front-page-static.html">Inicio</a></li>
+            <li role="none"><a role="menuitem" href="index.html">Inicio</a></li>
             <li role="none"><a role="menuitem" href="tendencias.html">Tendencias</a></li>
             <li role="none"><a role="menuitem" href="colecciones.html">Colecciones</a></li>
             <li role="none"><a role="menuitem" href="inspiracion.html">Inspiración</a></li>
@@ -27,9 +27,6 @@ export function renderNavbar() {
 }
 
 export function navbarScript() {
-  // USO EN HTML ESTÁTICO:
-  // 1. Copia el contenido de renderNavbar() y pégalo donde quieras el navbar en tu HTML.
-  // 2. Copia el contenido de navbarScript() y pégalo en un <script> al final del body.
 
   // Ejemplo:
   // <div id="navbar-container"></div>

@@ -637,29 +637,46 @@ body.home-page {
 	justify-content: center;
 }
 .testimonial-card {
-	background: var(--color-gold);
-	border-radius: 18px;
-	box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-	padding: 24px;
-	max-width: 260px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    padding-top: 4rem; /* Espacio para el ícono */
+    position: relative;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    font-style: italic;
+    color: #333;
 }
-.testimonial-img {
-	width: 64px;
-	height: 64px;
-	border-radius: 50%;
-	margin-bottom: 12px;
-	border: 3px solid var(--color-primary);
+.testimonial-icon {
+    position: absolute;
+    top: -25px; /* Mitad fuera de la tarjeta */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #E63946; /* Rojo de Papá Noel */
+    color: #fff;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-.testimonial-text {
-	font-style: italic;
-	margin-bottom: 10px;
+
+.testimonial-author {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+    font-style: normal;
+    color: #E63946;
 }
-.testimonial-name {
-	font-weight: bold;
-	color: var(--color-primary);
+
+.social-section {
+    background: #f9f9f9;
+    padding: 40px 20px;
 }
 
 /* ----------------------------------------------------\
