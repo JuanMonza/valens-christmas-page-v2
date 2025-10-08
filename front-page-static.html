@@ -202,578 +202,261 @@
         document.getElementById('footer').innerHTML = renderFooter();
         navbarScript();
     </script>
+    <!-- SCRIPTS CONSOLIDADOS -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const audio = document.getElementById('christmas-audio');
-            const playBtn = document.getElementById('play-music');
-            const muteBtn = document.getElementById('mute-music');
-            const iconPlay = document.getElementById('icon-play');
-            const iconPause = document.getElementById('icon-pause');
-            const iconMute = document.getElementById('icon-mute');
-            const iconUnmute = document.getElementById('icon-unmute');
-
-            if (audio && playBtn && muteBtn && iconPlay && iconPause && iconMute && iconUnmute) {
-                function updatePlayIcon() {
-                    if (audio.paused) {
-                        iconPlay.style.display = 'block';
-                        iconPause.style.display = 'none';
-                    } else {
-                        iconPlay.style.display = 'none';
-                        iconPause.style.display = 'block';
-                    }
-                }
-                function updateMuteIcon() {
-                    if (audio.muted) {
-                        iconMute.style.display = 'block';
-                        iconUnmute.style.display = 'none';
-                    } else {
-                        iconMute.style.display = 'none';
-                        iconUnmute.style.display = 'block';
-                    }
-                }
-                // Reproducir música en la primera interacción del usuario
-                let musicStarted = false;
-                function startMusic() {
-                    if (!musicStarted) {
-                        audio.play();
-                        musicStarted = true;
-                        updatePlayIcon();
-                    }
-                }
-                playBtn.addEventListener('click', function() {
-                    if(audio.paused){
-                        audio.play();
-                    }else{
-                        audio.pause();
-                    }
-                    updatePlayIcon();
-                });
-                muteBtn.addEventListener('click', function() {
-                    audio.muted = !audio.muted;
-                    updateMuteIcon();
-                });
-                audio.addEventListener('play', updatePlayIcon);
-                audio.addEventListener('pause', updatePlayIcon);
-                audio.addEventListener('volumechange', updateMuteIcon);
-                document.body.addEventListener('click', startMusic, { once: true });
-                document.body.addEventListener('touchstart', startMusic, { once: true });
-                updatePlayIcon();
-                updateMuteIcon();
-            }
-
-            // Función para inicializar un Swiper con autoplay
-            function initSwiper(containerId, options) {
-// ... (resto del script sin cambios)
-
-                const defaultOptions = {
-                    loop: true,
-                    slidesPerView: 2,
-                    speed: 800,
-                    autoplay: {
-                        delay: 2000,
-                        disableOnInteraction: false,
-                    },
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true,
-                    },
-                    loopAdditionalSlides: 4,
-                    watchSlidesProgress: true,
-                    loopPreventsSliding: false
-                };
-                return new Swiper(containerId, { ...defaultOptions, ...options });
-            }
-
-            // Configuración común para todos los carruseles
-            const commonConfig = {
-                slidesPerView: 2,
-                spaceBetween: 20,
-                speed: 800,
-                loop: true,
-                loopAdditionalSlides: 4,
-                watchSlidesProgress: true,
-                autoplay: {
-                    delay: 2000,
-                    disableOnInteraction: false
-                }
-            };
-
-            // Inicializar carrusel de Productos Destacados
-            initSwiper('#productos-swiper', {
-                ...commonConfig,
-                slidesPerView: 2,
-                breakpoints: {
-                    320: { slidesPerView: 1 },
-                    768: { slidesPerView: 2 }
-                }
-            });
-
-            // Inicializar carrusel de Categorías
-            initSwiper('#categorias-swiper', {
-                ...commonConfig,
-                slidesPerView: 2,
-                breakpoints: {
-                    320: { slidesPerView: 1 },
-                    768: { slidesPerView: 2 }
-                }
-            });
-
-            // Inicializar carrusel de Tendencias
-            initSwiper('#tendencias-swiper', {
-                ...commonConfig,
-                slidesPerView: 2,
-                breakpoints: {
-                    320: { slidesPerView: 1 },
-                    768: { slidesPerView: 2 }
-                }
-            });
-
-            // Inicializar carrusel de Colecciones
-            initSwiper('#colecciones-swiper', {
-                ...commonConfig,
-                slidesPerView: 2,
-                breakpoints: {
-                    320: { slidesPerView: 1 },
-                    768: { slidesPerView: 2 }
-                }
-            });
-            // Menú hamburguesa accesible / overlay
-            const menuToggle = document.getElementById('menu-toggle');
-            const mainMenu = document.getElementById('primary-menu');
-            function openMenu() {
-                mainMenu.classList.add('mobile', 'open');
-                menuToggle.classList.add('active');
-                menuToggle.setAttribute('aria-expanded', 'true');
-                document.body.style.overflow = 'hidden';
-            }
-            function closeMenu() {
-                mainMenu.classList.remove('open');
-                menuToggle.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            }
-            function toggleMenu() { mainMenu.classList.contains('open') ? closeMenu() : openMenu(); }
-            if (menuToggle) { menuToggle.addEventListener('click', toggleMenu); }
-            if (mainMenu) {
-                mainMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { if (window.innerWidth <= 900) closeMenu(); }));
-            }
-            window.addEventListener('resize', () => { if (window.innerWidth > 900) { closeMenu(); mainMenu.classList.remove('mobile'); } else { mainMenu.classList.add('mobile'); } });
 
             // ================== CONTADOR REGRESIVO NAVIDEÑO ==================
+            (function initChristmasCountdown() {
+                const daysEl = document.getElementById('days');
+                const hoursEl = document.getElementById('hours');
+                const minutesEl = document.getElementById('minutes');
+                const secondsEl = document.getElementById('seconds');
+                const container = document.getElementById('countdown-timer');
 
-            document.addEventListener('DOMContentLoaded', function () {
-                // ========== CONTADOR REGRESIVO NAVIDEÑO ==========
-                (function initChristmasCountdown() {
-                    const daysEl = document.getElementById('days');
-                    const hoursEl = document.getElementById('hours');
-                    const minutesEl = document.getElementById('minutes');
-                    const secondsEl = document.getElementById('seconds');
-                    const container = document.getElementById('countdown-timer');
-                    if (!daysEl || !hoursEl || !minutesEl || !secondsEl || !container) return;
-                    function getTargetDate() {
-                        const now = new Date();
-                        const currentYear = now.getFullYear();
-                        let target = new Date(currentYear, 11, 25, 0, 0, 0, 0);
-                        if (now > target) {
-                            target = new Date(currentYear + 1, 11, 25, 0, 0, 0, 0);
-                        }
-                        return target;
-                    }
-                    let targetDate = getTargetDate();
-                    let finished = false;
-                    function pad(n) { return n.toString().padStart(2, '0'); }
-                    function update() {
-                        if (finished) return;
-                        const now = new Date();
-                        let diff = targetDate - now;
-                        if (diff <= 0) {
-                            finished = true;
-                            daysEl.textContent = '00';
-                            hoursEl.textContent = '00';
-                            minutesEl.textContent = '00';
-                            secondsEl.textContent = '00';
-                            const msg = document.createElement('div');
-                            msg.textContent = '¡Feliz Navidad!';
-                            msg.setAttribute('role', 'status');
-                            msg.style.fontSize = '2rem';
-                            msg.style.fontWeight = '700';
-                            msg.style.marginTop = '12px';
-                            msg.style.textShadow = '0 2px 6px rgba(0,0,0,.4)';
-                            container.appendChild(msg);
-                            return;
-                        }
-                        const sec = Math.floor(diff / 1000) % 60;
-                        const min = Math.floor(diff / 1000 / 60) % 60;
-                        const hrs = Math.floor(diff / 1000 / 60 / 60) % 24;
-                        const days = Math.floor(diff / 1000 / 60 / 60 / 24);
-                        daysEl.textContent = pad(days);
-                        hoursEl.textContent = pad(hrs);
-                        minutesEl.textContent = pad(min);
-                        secondsEl.textContent = pad(sec);
-                    }
-                    update();
-                    setInterval(update, 1000);
-                })();
+                if (!daysEl || !hoursEl || !minutesEl || !secondsEl || !container) {
+                    console.warn("Elementos del contador no encontrados. El contador no se iniciará.");
+                    return;
+                }
 
-                // ========== CONTROL DE MÚSICA NAVIDEÑA ==========
+                function getTargetDate() {
+                    const now = new Date();
+                    const currentYear = now.getFullYear();
+                    let target = new Date(currentYear, 11, 25, 0, 0, 0, 0); // 25 Dic
+                    if (now > target) {
+                        target = new Date(currentYear + 1, 11, 25, 0, 0, 0, 0);
+                    }
+                    return target;
+                }
+
+                let targetDate = getTargetDate();
+                let finished = false;
+
+                function pad(n) { return n.toString().padStart(2, '0'); }
+
+                function update() {
+                    if (finished) return;
+                    const now = new Date();
+                    let diff = targetDate - now;
+
+                    if (diff <= 0) {
+                        finished = true;
+                        daysEl.textContent = '00';
+                        hoursEl.textContent = '00';
+                        minutesEl.textContent = '00';
+                        secondsEl.textContent = '00';
+                        const msg = document.createElement('div');
+                        msg.textContent = '¡Feliz Navidad!';
+                        msg.setAttribute('role', 'status');
+                        msg.style.cssText = 'font-size:2rem;font-weight:700;margin-top:12px;text-shadow:0 2px 6px rgba(0,0,0,.4)';
+                        container.appendChild(msg);
+                        return;
+                    }
+                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const hrs = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const min = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    const sec = Math.floor((diff % (1000 * 60)) / 1000);
+
+                    daysEl.textContent = pad(days);
+                    hoursEl.textContent = pad(hrs);
+                    minutesEl.textContent = pad(min);
+                    secondsEl.textContent = pad(sec);
+                }
+                update();
+                setInterval(update, 1000);
+            })();
+
+            // ================== CONTROL DE MÚSICA NAVIDEÑA ==================
+            (function initChristmasMusic() {
                 try {
-                    (function initChristmasMusic() {
-                        const audio = document.getElementById('christmas-audio');
-                        const btn = document.getElementById('play-music');
-                        const muteBtn = document.getElementById('mute-music');
-                        const iconPlay = document.getElementById('icon-play');
-                        const iconPause = document.getElementById('icon-pause');
-                        const iconMute = document.getElementById('icon-mute');
-                        const iconUnmute = document.getElementById('icon-unmute');
-                        if (!audio || !btn || !muteBtn || !iconPlay || !iconPause || !iconMute || !iconUnmute) return;
-                        audio.loop = true;
-                        setTimeout(function() {
+                    const audio = document.getElementById('christmas-audio');
+                    const btn = document.getElementById('play-music');
+                    const muteBtn = document.getElementById('mute-music');
+                    const iconPlay = document.getElementById('icon-play');
+                    const iconPause = document.getElementById('icon-pause');
+                    const iconMute = document.getElementById('icon-mute');
+                    const iconUnmute = document.getElementById('icon-unmute');
+
+                    if (!audio || !btn || !muteBtn || !iconPlay || !iconPause || !iconMute || !iconUnmute) {
+                         console.warn("Elementos del reproductor de música no encontrados.");
+                        return;
+                    }
+                    
+                    audio.loop = true;
+
+                    function updatePlayIcon() {
+                        iconPlay.style.display = audio.paused ? 'block' : 'none';
+                        iconPause.style.display = audio.paused ? 'none' : 'block';
+                    }
+
+                    function updateMuteIcon() {
+                        iconMute.style.display = audio.muted ? 'block' : 'none';
+                        iconUnmute.style.display = audio.muted ? 'none' : 'block';
+                    }
+
+                    btn.addEventListener('click', function () {
+                        if (audio.paused) {
+                            audio.play().catch(e => console.error("Error al reproducir audio:", e));
+                        } else {
+                            audio.pause();
+                        }
+                    });
+
+                    muteBtn.addEventListener('click', function () {
+                        audio.muted = !audio.muted;
+                    });
+
+                    audio.addEventListener('play', updatePlayIcon);
+                    audio.addEventListener('pause', updatePlayIcon);
+                    audio.addEventListener('volumechange', updateMuteIcon);
+                    
+                    const startMusicOnInteraction = () => {
+                        if (audio.paused) {
                             audio.play().catch(()=>{});
-                        }, 300);
-                        function updatePlayIcon() {
-                            if(audio.paused){
-                                iconPlay.style.display = 'block';
-                                iconPause.style.display = 'none';
-                                btn.style.background = '';
-                            }else{
-                                iconPlay.style.display = 'none';
-                                iconPause.style.display = 'block';
-                                btn.style.background = '#2D6A4F';
-                            }
                         }
-                        function updateMuteIcon() {
-                            if(audio.muted){
-                                iconMute.style.display = 'block';
-                                iconUnmute.style.display = 'none';
-                            }else{
-                                iconMute.style.display = 'none';
-                                iconUnmute.style.display = 'block';
-                            }
-                        }
-                        btn.addEventListener('click', function(){
-                            if(audio.paused){
-                                audio.play();
-                            }else{
-                                audio.pause();
-                            }
-                            updatePlayIcon();
-                        });
-                        muteBtn.addEventListener('click', function(){
-                            audio.muted = !audio.muted;
-                            updateMuteIcon();
-                        });
-                        audio.addEventListener('play', updatePlayIcon);
-                        audio.addEventListener('pause', updatePlayIcon);
-                        audio.addEventListener('volumechange', updateMuteIcon);
-                        updatePlayIcon();
-                        updateMuteIcon();
-                    })();
+                        document.body.removeEventListener('click', startMusicOnInteraction);
+                        document.body.removeEventListener('touchstart', startMusicOnInteraction);
+                    };
+
+                    document.body.addEventListener('click', startMusicOnInteraction);
+                    document.body.addEventListener('touchstart', startMusicOnInteraction);
+
+                    updatePlayIcon();
+                    updateMuteIcon();
+
                 } catch (e) {
-                    console.warn('Error en el reproductor de música:', e);
+                    console.error('Error al inicializar el reproductor de música:', e);
                 }
-            });
-
-            // ================== CONTROL DE MÚSICA NAVIDEÑA ==================
-            (function initChristmasMusic() {
-                const audio = document.getElementById('christmas-audio');
-                const btn = document.getElementById('play-music');
-                const muteBtn = document.getElementById('mute-music');
-                const iconPlay = document.getElementById('icon-play');
-                const iconPause = document.getElementById('icon-pause');
-                const iconMute = document.getElementById('icon-mute');
-                const iconUnmute = document.getElementById('icon-unmute');
-                if (!audio || !btn || !muteBtn || !iconPlay || !iconPause || !iconMute || !iconUnmute) return;
-                audio.loop = true;
-                // Autoplay al cargar la página
-                setTimeout(function() {
-                    audio.play().catch(()=>{});
-                }, 300);
-                function updatePlayIcon() {
-                    if(audio.paused){
-                        iconPlay.style.display = 'block';
-                        iconPause.style.display = 'none';
-                        btn.style.background = '';
-                    }else{
-                        iconPlay.style.display = 'none';
-                        iconPause.style.display = 'block';
-                        btn.style.background = '#2D6A4F'; // verde navideño
-                    }
-                }
-                function updateMuteIcon() {
-                    if(audio.muted){
-                        iconMute.style.display = 'block';
-                        iconUnmute.style.display = 'none';
-                    }else{
-                        iconMute.style.display = 'none';
-                        iconUnmute.style.display = 'block';
-                    }
-                }
-                btn.addEventListener('click', function(){
-                    if(audio.paused){
-                        audio.play();
-                    }else{
-                        audio.pause();
-                    }
-                    updatePlayIcon();
-                });
-                muteBtn.addEventListener('click', function(){
-                    audio.muted = !audio.muted;
-                    updateMuteIcon();
-                });
-                audio.addEventListener('play', updatePlayIcon);
-                audio.addEventListener('pause', updatePlayIcon);
-                audio.addEventListener('volumechange', updateMuteIcon);
-                updatePlayIcon();
-                updateMuteIcon();
             })();
-            // =================================================================
 
-            // ================== OCULTAR NAVBAR AL HACER SCROLL ==================
-            (function initNavbarScroll() {
-                const header = document.getElementById('masthead');
-                if (!header) return;
+            // ================== INICIALIZAR CARRUSELES (SWIPER) ==================
+            (function initSwipers() {
+                if (typeof Swiper === 'undefined') return;
 
-                let lastScrollTop = 0;
-                const delta = 5;
-                const navbarHeight = header.offsetHeight;
+                function initSwiper(containerId, options) {
+                    const defaultOptions = {
+                        loop: true,
+                        slidesPerView: 2,
+                        speed: 800,
+                        autoplay: { delay: 2000, disableOnInteraction: false },
+                        pagination: { el: '.swiper-pagination', clickable: true },
+                        loopAdditionalSlides: 4,
+                        watchSlidesProgress: true,
+                        loopPreventsSliding: false
+                    };
+                    return new Swiper(containerId, { ...defaultOptions, ...options });
+                }
 
-                window.addEventListener('scroll', function() {
-                    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const commonConfig = {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                    speed: 800,
+                    loop: true,
+                    loopAdditionalSlides: 4,
+                    watchSlidesProgress: true,
+                    autoplay: { delay: 2000, disableOnInteraction: false }
+                };
 
-                    // Asegurarse de que el scroll sea mayor que la altura del navbar
-                    if (Math.abs(lastScrollTop - scrollTop) <= delta) return;
-
-                    if (scrollTop > lastScrollTop && scrollTop > navbarHeight){
-                        // Scroll Down
-                        header.style.transform = 'translateY(-100%)';
-                        header.style.transition = 'transform 0.3s ease-in-out';
-                    } else {
-                        // Scroll Up
-                        header.style.transform = 'translateY(0)';
-                    }
-
-                    lastScrollTop = scrollTop;
-                });
+                initSwiper('#productos-swiper', { ...commonConfig, breakpoints: { 320: { slidesPerView: 1 }, 768: { slidesPerView: 2 } } });
+                initSwiper('#categorias-swiper', { ...commonConfig, breakpoints: { 320: { slidesPerView: 1 }, 768: { slidesPerView: 2 } } });
+                initSwiper('#tendencias-swiper', { ...commonConfig, breakpoints: { 320: { slidesPerView: 1 }, 768: { slidesPerView: 2 } } });
+                initSwiper('#colecciones-swiper', { ...commonConfig, breakpoints: { 320: { slidesPerView: 1 }, 768: { slidesPerView: 2 } } });
             })();
-            // =================================================================
 
-            // ================== CONTROL DE MÚSICA NAVIDEÑA ==================
-            (function initChristmasMusic() {
-                const audio = document.getElementById('christmas-audio');
-                const btn = document.getElementById('play-music');
-                const muteBtn = document.getElementById('mute-music');
-                const iconPlay = document.getElementById('icon-play');
-                const iconPause = document.getElementById('icon-pause');
-                const iconMute = document.getElementById('icon-mute');
-                const iconUnmute = document.getElementById('icon-unmute');
-                if (!audio || !btn || !muteBtn || !iconPlay || !iconPause || !iconMute || !iconUnmute) return;
-                audio.loop = true;
-                // Autoplay al cargar la página
-                setTimeout(function() {
-                    audio.play().catch(()=>{});
-                }, 300);
-                function updatePlayIcon() {
-                    if(audio.paused){
-                        iconPlay.style.display = 'block';
-                        iconPause.style.display = 'none';
-                        btn.style.background = '';
-                    }else{
-                        iconPlay.style.display = 'none';
-                        iconPause.style.display = 'block';
-                        btn.style.background = '#2D6A4F'; // verde navideño
+            // ================== MENÚ HAMBURGUESA Y NAVBAR ==================
+            (function initNavbar() {
+                const menuToggle = document.getElementById('menu-toggle');
+                const mainMenu = document.getElementById('primary-menu');
+                const header = document.querySelector('.site-header');
+
+                if (menuToggle && mainMenu) {
+                    function openMenu() {
+                        mainMenu.classList.add('mobile', 'open');
+                        menuToggle.classList.add('active');
+                        menuToggle.setAttribute('aria-expanded', 'true');
+                        document.body.style.overflow = 'hidden';
                     }
-                }
-                function updateMuteIcon() {
-                    if(audio.muted){
-                        iconMute.style.display = 'block';
-                        iconUnmute.style.display = 'none';
-                    }else{
-                        iconMute.style.display = 'none';
-                        iconUnmute.style.display = 'block';
-                    }
-                }
-                btn.addEventListener('click', function() {
-                    if(audio.paused){
-                        audio.play();
-                    }else{
-                        audio.pause();
-                    }
-                    updatePlayIcon();
-                });
-                muteBtn.addEventListener('click', function() {
-                    audio.muted = !audio.muted;
-                    updateMuteIcon();
-                });
-                audio.addEventListener('play', updatePlayIcon);
-                audio.addEventListener('pause', updatePlayIcon);
-                audio.addEventListener('volumechange', updateMuteIcon);
-                updatePlayIcon();
-                updateMuteIcon();
-            })();
-            // =================================================================
-    </script>
-
-    <script>
-        // Navbar hamburguesa y efectos visuales
-        document.addEventListener('DOMContentLoaded', function () {
-            var menuToggle = document.getElementById('menu-toggle');
-            if (!menuToggle) return; // Si no hay navbar, no hacer nada
-
-            var mainMenu = document.getElementById('primary-menu');
-            var hamburger = menuToggle.querySelector('.hamburger');
-
-            // Estilos y estructura de la hamburguesa
-            hamburger.innerHTML = '<span></span><span></span><span></span>';
-            hamburger.style.display = 'inline-block';
-            hamburger.style.width = '28px';
-            hamburger.style.height = '22px';
-            hamburger.style.position = 'relative';
-            Array.from(hamburger.children).forEach(function (bar, i) {
-                bar.style.position = 'absolute';
-                bar.style.left = '0';
-                bar.style.width = '100%';
-                bar.style.height = '4px';
-                bar.style.background = '#E63946';
-                bar.style.borderRadius = '2px';
-                bar.style.transition = 'all .4s';
-                bar.style.top = (i * 9) + 'px';
-            });
-
-            // Lógica para abrir/cerrar menú
-            menuToggle.addEventListener('click', function () {
-                mainMenu.classList.toggle('open');
-                var expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-                menuToggle.setAttribute('aria-expanded', !expanded);
-
-                if (mainMenu.classList.contains('open')) {
-                    mainMenu.style.display = 'flex';
-                    mainMenu.style.flexDirection = 'column';
-                    mainMenu.style.position = 'absolute';
-                    mainMenu.style.top = '100%';
-                    mainMenu.style.left = '0';
-                    mainMenu.style.width = '100%';
-                    mainMenu.style.background = 'rgba(255, 255, 255, 0.98)';
-                    mainMenu.style.padding = '2rem 0';
-                    mainMenu.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
-
-                    hamburger.children[0].style.transform = 'translateY(9px) rotate(45deg)';
-                    hamburger.children[1].style.opacity = '0';
-                    hamburger.children[2].style.transform = 'translateY(-9px) rotate(-45deg)';
-                } else {
-                    mainMenu.style.display = 'none';
-                    hamburger.children[0].style.transform = '';
-                    hamburger.children[1].style.opacity = '1';
-                    hamburger.children[2].style.transform = '';
-                }
-            });
-
-            // Lógica responsive
-            function checkMenu() {
-                if (window.innerWidth <= 900) {
-                    if (!mainMenu.classList.contains('open')) {
-                        mainMenu.style.display = 'none';
-                    }
-                    menuToggle.style.display = 'inline-block';
-                } else {
-                    mainMenu.style.display = 'flex';
-                    mainMenu.style.flexDirection = 'row';
-                    mainMenu.style.position = 'static';
-                    mainMenu.style.background = 'transparent';
-                    mainMenu.style.boxShadow = 'none';
-                    mainMenu.style.padding = '0';
-                    mainMenu.classList.remove('open');
-                    menuToggle.style.display = 'none';
-                    hamburger.children[0].style.transform = '';
-                    hamburger.children[1].style.opacity = '1';
-                    hamburger.children[2].style.transform = '';
-                }
-            }
-            window.addEventListener('resize', checkMenu);
-            checkMenu();
-
-            // Cerrar menú al hacer clic en un enlace
-            var menuLinks = mainMenu.querySelectorAll('a');
-            menuLinks.forEach(function (link) {
-                link.addEventListener('click', function () {
-                    if (window.innerWidth <= 900 && mainMenu.classList.contains('open')) {
+                    function closeMenu() {
                         mainMenu.classList.remove('open');
-                        mainMenu.style.display = 'none';
+                        menuToggle.classList.remove('active');
                         menuToggle.setAttribute('aria-expanded', 'false');
-                        hamburger.children[0].style.transform = '';
-                        hamburger.children[1].style.opacity = '1';
-                        hamburger.children[2].style.transform = '';
+                        document.body.style.overflow = '';
                     }
-                });
-            });
-        });
-    </script>
-</script> }
-    <script>
-        // Efecto de nieve con canvas
-        document.addEventListener('DOMContentLoaded', function () {
-            const canvas = document.getElementById('snow-canvas');
-            if (!canvas) return; // Si no hay canvas, no hacer nada
+                    function toggleMenu() { mainMenu.classList.contains('open') ? closeMenu() : openMenu(); }
+                    menuToggle.addEventListener('click', toggleMenu);
+                    mainMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { if (window.innerWidth <= 900) closeMenu(); }));
+                    window.addEventListener('resize', () => { if (window.innerWidth > 900) { closeMenu(); mainMenu.classList.remove('mobile'); } else { mainMenu.classList.add('mobile'); } });
+                }
 
-            const ctx = canvas.getContext('2d');
-            let width = window.innerWidth;
-            let height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
+                if (header) {
+                    let lastScrollTop = 0;
+                    const delta = 5;
+                    window.addEventListener('scroll', function () {
+                        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                        if (Math.abs(lastScrollTop - scrollTop) <= delta) return;
+                        if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
+                            header.style.transform = 'translateY(-100%)';
+                        } else {
+                            header.style.transform = 'translateY(0)';
+                        }
+                        lastScrollTop = scrollTop;
+                    }, false);
+                }
+            })();
 
-            const numFlakes = 100;
-            const flakes = [];
-
-            function random(min, max) {
-                return Math.random() * (max - min) + min;
-            }
-
-            function createFlakes() {
+            // ================== EFECTO DE NIEVE ==================
+            (function initSnowEffect() {
+                const canvas = document.getElementById('snow-canvas');
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                let width = window.innerWidth;
+                let height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+                const numFlakes = 100;
+                const flakes = [];
+                function random(min, max) { return Math.random() * (max - min) + min; }
                 for (let i = 0; i < numFlakes; i++) {
                     flakes.push({
                         x: random(0, width),
                         y: random(0, height),
-                        radius: random(1, 4),
-                        density: random(1, 3)
+                        radius: random(1, 3.5),
+                        speed: random(1, 3),
+                        opacity: random(0.5, 1)
                     });
                 }
-            }
-
-            function drawFlakes() {
-                ctx.clearRect(0, 0, width, height);
-                ctx.fillStyle = 'white';
-                ctx.beginPath();
-                for (let i = 0; i < numFlakes; i++) {
-                    const f = flakes[i];
-                    ctx.moveTo(f.x, f.y);
-                    ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2, true);
+                function drawFlakes() {
+                    ctx.clearRect(0, 0, width, height);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${flakes[0].opacity})`;
+                    ctx.beginPath();
+                    for (let i = 0; i < numFlakes; i++) {
+                        const flake = flakes[i];
+                        ctx.moveTo(flake.x, flake.y);
+                        ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2, true);
+                    }
+                    ctx.fill();
+                    moveFlakes();
                 }
-                ctx.fill();
-                moveFlakes();
-            }
-
-            let angle = 0;
-
-            function moveFlakes() {
-                angle += 0.01;
-                for (let i = 0; i < numFlakes; i++) {
-                    const f = flakes[i];
-                    f.y += Math.pow(f.density, 2) + 1;
-                    f.x += Math.sin(angle) * 2;
-
-                    if (f.y > height) {
-                        flakes[i] = { x: random(0, width), y: 0, radius: f.radius, density: f.density };
+                function moveFlakes() {
+                    for (let i = 0; i < numFlakes; i++) {
+                        const flake = flakes[i];
+                        flake.y += flake.speed;
+                        if (flake.y > height) {
+                            flake.x = random(0, width);
+                            flake.y = -5;
+                        }
                     }
                 }
-            }
+                setInterval(drawFlakes, 30);
+                window.addEventListener('resize', () => {
+                    width = window.innerWidth;
+                    height = window.innerHeight;
+                    canvas.width = width;
+                    canvas.height = height;
+                });
+            })();
+        });
+    </script>
+</body>
 
-            function updateCanvasSize() {
-                width = window.innerWidth;
-                height = window.innerHeight;
-                canvas.width = width;
-                canvas.height = height;
-            }
-
-            window.addEventListener('resize', updateCanvasSize);
-
-            createFlakes();
-            setInterval(drawFlakes, 33)} )}) // Apro
+</html>
