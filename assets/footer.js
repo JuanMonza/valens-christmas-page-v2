@@ -18,10 +18,10 @@ export function renderFooter() {
                 <ul style="list-style: none; padding: 0; color: #f1faee;">
                     <li style="margin-bottom: 10px;"><strong>Dirección:</strong> Av. Principal, Ciudad Navidad, 12345
                     </li>
-                    <li style="margin-bottom: 10px;"><strong>Teléfono:</strong> +1 (234) 567-890</li>
+                    <li style="margin-bottom: 10px;"><strong>Teléfono:</strong> <a href="https://wa.me/573052290583" target="_blank" style="color:#fff;text-decoration:underline;">+57 305 2290583 (WhatsApp)</a></li>
                     <li style="margin-bottom: 10px;"><strong>Email:</strong> <a
-                            href="mailto:contacto@valenschristmas.com"
-                            style="color: #fff;">contacto@valenschristmas.com</a></li>
+                            href="mailto:casacontable@gmail.com"
+                            style="color: #fff;">casacontable@gmail.com</a></li>
                 </ul>
             </div>
 

@@ -47,48 +47,35 @@
 
 
             <section class="countdown-container fade-in"
-                style="display: flex; align-items: center; justify-content: center; gap: 40px; background: rgba(230, 57, 70, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 30px; border-radius: 15px; margin-top: 20px; box-shadow: 0 8px 32px rgba(230, 57, 70, 0.4);">
+                style="display: flex; align-items: center; justify-content: center; gap: 40px; background: rgba(230, 57, 70, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 30px; border-radius: 15px; margin-top: 20px; box-shadow: 0 8px 32px rgba(230, 57, 70, 0.4); position: relative;">
                 <div id="countdown-timer" style="color: #ffffff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
                     <div class="time-unit"><span id="days">00</span><span>Días</span></div>
                     <div class="time-unit"><span id="hours">00</span><span>Horas</span></div>
                     <div class="time-unit"><span id="minutes">00</span><span>Minutos</span></div>
                     <div class="time-unit"><span id="seconds">00</span><span>Segundos</span></div>
                 </div>
-                <button id="play-music" class="crystal-btn" aria-pressed="false"
+                <button id="play-music" class="music-glass-btn" aria-pressed="false"
                     aria-label="Reproducir música navideña">
-                    <span class="btn-icon" aria-hidden="true">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <circle cx="16" cy="16" r="16" fill="#E63946" />
-                            <text x="16" y="22" text-anchor="middle" font-size="18" fill="#fff"
-                                font-family="Arial">🎅</text>
-                        </svg>
-                    </span>
-                    <span class="btn-text status-label"><span class="status-action">Reproducir</span> música
-                        navideña</span>
-                    <span class="equalizer" aria-hidden="true">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                    </span>
+                    <svg id="icon-play" viewBox="0 0 32 32" style="display:block">
+                        <circle cx="16" cy="16" r="16" fill="#E63946" />
+                        <polygon points="12,10 24,16 12,22" fill="#fff" />
+                    </svg>
+                    <svg id="icon-pause" viewBox="0 0 32 32" style="display:none">
+                        <circle cx="16" cy="16" r="16" fill="#E63946" />
+                        <rect x="12" y="10" width="3" height="12" fill="#fff" />
+                        <rect x="17" y="10" width="3" height="12" fill="#fff" />
+                    </svg>
                 </button>
-                <button id="mute-music" class="crystal-btn mute-btn" aria-pressed="false" aria-label="Silenciar música"
-                    style="margin-left:12px;">
-                    <span class="btn-icon" aria-hidden="true">
-                        <svg class="icon-sound-on" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="#fff" stroke="none"></polygon>
-                            <path d="M15 9a3 3 0 0 1 0 6" />
-                            <path d="M17.5 5a7 7 0 0 1 0 14" />
-                        </svg>
-                        <svg class="icon-sound-off" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
-                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="#fff" stroke="none"></polygon>
-                            <line x1="18" y1="9" x2="22" y2="13" />
-                            <line x1="22" y1="9" x2="18" y2="13" />
-                        </svg>
-                    </span>
-                    <span class="btn-text mute-label"><span class="mute-action">Mute</span> audio</span>
+                <button id="mute-music" class="music-glass-btn mute-separate" aria-pressed="false" aria-label="Silenciar música navideña">
+                    <svg id="icon-mute" viewBox="0 0 32 32">
+                        <circle cx="16" cy="16" r="16" fill="#E63946" />
+                        <polygon points="10,12 16,12 20,8 20,24 16,20 10,20" fill="#fff" />
+                        <line x1="10" y1="10" x2="22" y2="22" stroke="#fff" stroke-width="2" />
+                    </svg>
+                    <svg id="icon-unmute" viewBox="0 0 32 32" style="display:none">
+                        <circle cx="16" cy="16" r="16" fill="#E63946" />
+                        <polygon points="10,12 16,12 20,8 20,24 16,20 10,20" fill="#fff" />
+                    </svg>
                 </button>
             </section>
 
@@ -177,7 +164,7 @@
                 <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook"
                     style="width:36px;height:36px;filter: invert(1) drop-shadow(0 1px 4px #ff0000);">
             </a>
-            <a href="https://instagram.com/" target="_blank" title="Instagram" style="display:inline-block;">
+            <a href="https://www.instagram.com/valentschristmas?igsh=aHExcjdudGdxNHU4" target="_blank" title="Instagram" style="display:inline-block;">
                 <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"
                     style="width:36px;height:36px;filter: invert(1) drop-shadow(0 1px 4px #047200);">
             </a>
@@ -220,75 +207,58 @@
             const audio = document.getElementById('christmas-audio');
             const playBtn = document.getElementById('play-music');
             const muteBtn = document.getElementById('mute-music');
+            const iconPlay = document.getElementById('icon-play');
+            const iconPause = document.getElementById('icon-pause');
+            const iconMute = document.getElementById('icon-mute');
+            const iconUnmute = document.getElementById('icon-unmute');
 
-            if (audio && playBtn && muteBtn) {
-                const playStatus = playBtn.querySelector('.status-action');
-                const equalizer = playBtn.querySelector('.equalizer');
-                const muteStatus = muteBtn.querySelector('.mute-action');
-                const iconOn = muteBtn.querySelector('.icon-sound-on');
-                const iconOff = muteBtn.querySelector('.icon-sound-off');
-
-                const playMusic = () => {
-                    audio.play().then(() => {
-                        playBtn.classList.add('playing');
-                        playBtn.setAttribute('aria-pressed', 'true');
-                        playStatus.textContent = 'Pausar';
-                        equalizer.classList.add('active');
-                    }).catch(error => {
-                        console.error("Audio play failed:", error);
-                    });
-                };
-
-                const pauseMusic = () => {
-                    audio.pause();
-                    playBtn.classList.remove('playing');
-                    playBtn.setAttribute('aria-pressed', 'false');
-                    playStatus.textContent = 'Reproducir';
-                    equalizer.classList.remove('active');
-                };
-
-                const togglePlay = () => {
+            if (audio && playBtn && muteBtn && iconPlay && iconPause && iconMute && iconUnmute) {
+                function updatePlayIcon() {
                     if (audio.paused) {
-                        playMusic();
+                        iconPlay.style.display = 'block';
+                        iconPause.style.display = 'none';
                     } else {
-                        pauseMusic();
+                        iconPlay.style.display = 'none';
+                        iconPause.style.display = 'block';
                     }
-                };
-
-                const toggleMute = () => {
-                    audio.muted = !audio.muted;
-                    updateMuteButton();
-                };
-
-                const updateMuteButton = () => {
+                }
+                function updateMuteIcon() {
                     if (audio.muted) {
-                        muteBtn.setAttribute('aria-pressed', 'true');
-                        muteStatus.textContent = 'Unmute';
-                        iconOn.style.display = 'none';
-                        iconOff.style.display = 'block';
+                        iconMute.style.display = 'block';
+                        iconUnmute.style.display = 'none';
                     } else {
-                        muteBtn.setAttribute('aria-pressed', 'false');
-                        muteStatus.textContent = 'Mute';
-                        iconOn.style.display = 'block';
-                        iconOff.style.display = 'none';
+                        iconMute.style.display = 'none';
+                        iconUnmute.style.display = 'block';
                     }
-                };
-
-                // Event Listeners
-                playBtn.addEventListener('click', togglePlay);
-                muteBtn.addEventListener('click', toggleMute);
-
-                // Auto-play on first user interaction
-                const autoPlay = () => {
-                    playMusic();
-                    document.body.removeEventListener('click', autoPlay);
-                    document.body.removeEventListener('touchstart', autoPlay);
-                };
-                document.body.addEventListener('click', autoPlay);
-                document.body.addEventListener('touchstart', autoPlay);
-                
-                // Sync mute button on load
-                updateMuteButton();
+                }
+                // Reproducir música en la primera interacción del usuario
+                let musicStarted = false;
+                function startMusic() {
+                    if (!musicStarted) {
+                        audio.play();
+                        musicStarted = true;
+                        updatePlayIcon();
+                    }
+                }
+                playBtn.addEventListener('click', function() {
+                    if(audio.paused){
+                        audio.play();
+                    }else{
+                        audio.pause();
+                    }
+                    updatePlayIcon();
+                });
+                muteBtn.addEventListener('click', function() {
+                    audio.muted = !audio.muted;
+                    updateMuteIcon();
+                });
+                audio.addEventListener('play', updatePlayIcon);
+                audio.addEventListener('pause', updatePlayIcon);
+                audio.addEventListener('volumechange', updateMuteIcon);
+                document.body.addEventListener('click', startMusic, { once: true });
+                document.body.addEventListener('touchstart', startMusic, { once: true });
+                updatePlayIcon();
+                updateMuteIcon();
             }
 
             // Función para inicializar un Swiper con autoplay
@@ -390,68 +360,171 @@
             window.addEventListener('resize', () => { if (window.innerWidth > 900) { closeMenu(); mainMenu.classList.remove('mobile'); } else { mainMenu.classList.add('mobile'); } });
 
             // ================== CONTADOR REGRESIVO NAVIDEÑO ==================
-            (function initChristmasCountdown() {
-                const daysEl = document.getElementById('days');
-                const hoursEl = document.getElementById('hours');
-                const minutesEl = document.getElementById('minutes');
-                const secondsEl = document.getElementById('seconds');
-                const container = document.getElementById('countdown-timer');
 
-                if (!daysEl || !hoursEl || !minutesEl || !secondsEl || !container) {
-                    return; // Elementos no presentes, evita errores en páginas donde no exista la sección
-                }
-
-                function getTargetDate() {
-                    const now = new Date();
-                    const currentYear = now.getFullYear();
-                    let target = new Date(currentYear, 11, 25, 0, 0, 0, 0); // 25 Dic YYYY 00:00:00
-                    if (now > target) {
-                        target = new Date(currentYear + 1, 11, 25, 0, 0, 0, 0); // Próximo año
+            document.addEventListener('DOMContentLoaded', function () {
+                // ========== CONTADOR REGRESIVO NAVIDEÑO ==========
+                (function initChristmasCountdown() {
+                    const daysEl = document.getElementById('days');
+                    const hoursEl = document.getElementById('hours');
+                    const minutesEl = document.getElementById('minutes');
+                    const secondsEl = document.getElementById('seconds');
+                    const container = document.getElementById('countdown-timer');
+                    if (!daysEl || !hoursEl || !minutesEl || !secondsEl || !container) return;
+                    function getTargetDate() {
+                        const now = new Date();
+                        const currentYear = now.getFullYear();
+                        let target = new Date(currentYear, 11, 25, 0, 0, 0, 0);
+                        if (now > target) {
+                            target = new Date(currentYear + 1, 11, 25, 0, 0, 0, 0);
+                        }
+                        return target;
                     }
-                    return target;
-                }
-
-                let targetDate = getTargetDate();
-                let finished = false;
-
-                function pad(n) { return n.toString().padStart(2, '0'); }
-
-                function update() {
-                    if (finished) return;
-                    const now = new Date();
-                    let diff = targetDate - now; // ms restantes
-                    if (diff <= 0) {
-                        finished = true;
-                        daysEl.textContent = '00';
-                        hoursEl.textContent = '00';
-                        minutesEl.textContent = '00';
-                        secondsEl.textContent = '00';
-                        // Mensaje final accesible
-                        const msg = document.createElement('div');
-                        msg.textContent = '¡Feliz Navidad!';
-                        msg.setAttribute('role', 'status');
-                        msg.style.fontSize = '2rem';
-                        msg.style.fontWeight = '700';
-                        msg.style.marginTop = '12px';
-                        msg.style.textShadow = '0 2px 6px rgba(0,0,0,.4)';
-                        container.appendChild(msg);
-                        return;
+                    let targetDate = getTargetDate();
+                    let finished = false;
+                    function pad(n) { return n.toString().padStart(2, '0'); }
+                    function update() {
+                        if (finished) return;
+                        const now = new Date();
+                        let diff = targetDate - now;
+                        if (diff <= 0) {
+                            finished = true;
+                            daysEl.textContent = '00';
+                            hoursEl.textContent = '00';
+                            minutesEl.textContent = '00';
+                            secondsEl.textContent = '00';
+                            const msg = document.createElement('div');
+                            msg.textContent = '¡Feliz Navidad!';
+                            msg.setAttribute('role', 'status');
+                            msg.style.fontSize = '2rem';
+                            msg.style.fontWeight = '700';
+                            msg.style.marginTop = '12px';
+                            msg.style.textShadow = '0 2px 6px rgba(0,0,0,.4)';
+                            container.appendChild(msg);
+                            return;
+                        }
+                        const sec = Math.floor(diff / 1000) % 60;
+                        const min = Math.floor(diff / 1000 / 60) % 60;
+                        const hrs = Math.floor(diff / 1000 / 60 / 60) % 24;
+                        const days = Math.floor(diff / 1000 / 60 / 60 / 24);
+                        daysEl.textContent = pad(days);
+                        hoursEl.textContent = pad(hrs);
+                        minutesEl.textContent = pad(min);
+                        secondsEl.textContent = pad(sec);
                     }
-                    // Cálculos
-                    const sec = Math.floor(diff / 1000) % 60;
-                    const min = Math.floor(diff / 1000 / 60) % 60;
-                    const hrs = Math.floor(diff / 1000 / 60 / 60) % 24;
-                    const days = Math.floor(diff / 1000 / 60 / 60 / 24);
+                    update();
+                    setInterval(update, 1000);
+                })();
 
-                    daysEl.textContent = pad(days);
-                    hoursEl.textContent = pad(hrs);
-                    minutesEl.textContent = pad(min);
-                    secondsEl.textContent = pad(sec);
+                // ========== CONTROL DE MÚSICA NAVIDEÑA ==========
+                try {
+                    (function initChristmasMusic() {
+                        const audio = document.getElementById('christmas-audio');
+                        const btn = document.getElementById('play-music');
+                        const muteBtn = document.getElementById('mute-music');
+                        const iconPlay = document.getElementById('icon-play');
+                        const iconPause = document.getElementById('icon-pause');
+                        const iconMute = document.getElementById('icon-mute');
+                        const iconUnmute = document.getElementById('icon-unmute');
+                        if (!audio || !btn || !muteBtn || !iconPlay || !iconPause || !iconMute || !iconUnmute) return;
+                        audio.loop = true;
+                        setTimeout(function() {
+                            audio.play().catch(()=>{});
+                        }, 300);
+                        function updatePlayIcon() {
+                            if(audio.paused){
+                                iconPlay.style.display = 'block';
+                                iconPause.style.display = 'none';
+                                btn.style.background = '';
+                            }else{
+                                iconPlay.style.display = 'none';
+                                iconPause.style.display = 'block';
+                                btn.style.background = '#2D6A4F';
+                            }
+                        }
+                        function updateMuteIcon() {
+                            if(audio.muted){
+                                iconMute.style.display = 'block';
+                                iconUnmute.style.display = 'none';
+                            }else{
+                                iconMute.style.display = 'none';
+                                iconUnmute.style.display = 'block';
+                            }
+                        }
+                        btn.addEventListener('click', function(){
+                            if(audio.paused){
+                                audio.play();
+                            }else{
+                                audio.pause();
+                            }
+                            updatePlayIcon();
+                        });
+                        muteBtn.addEventListener('click', function(){
+                            audio.muted = !audio.muted;
+                            updateMuteIcon();
+                        });
+                        audio.addEventListener('play', updatePlayIcon);
+                        audio.addEventListener('pause', updatePlayIcon);
+                        audio.addEventListener('volumechange', updateMuteIcon);
+                        updatePlayIcon();
+                        updateMuteIcon();
+                    })();
+                } catch (e) {
+                    console.warn('Error en el reproductor de música:', e);
                 }
+            });
 
-                // Actualización inmediata y luego cada segundo
-                update();
-                setInterval(update, 1000);
+            // ================== CONTROL DE MÚSICA NAVIDEÑA ==================
+            (function initChristmasMusic() {
+                const audio = document.getElementById('christmas-audio');
+                const btn = document.getElementById('play-music');
+                const muteBtn = document.getElementById('mute-music');
+                const iconPlay = document.getElementById('icon-play');
+                const iconPause = document.getElementById('icon-pause');
+                const iconMute = document.getElementById('icon-mute');
+                const iconUnmute = document.getElementById('icon-unmute');
+                if (!audio || !btn || !muteBtn || !iconPlay || !iconPause || !iconMute || !iconUnmute) return;
+                audio.loop = true;
+                // Autoplay al cargar la página
+                setTimeout(function() {
+                    audio.play().catch(()=>{});
+                }, 300);
+                function updatePlayIcon() {
+                    if(audio.paused){
+                        iconPlay.style.display = 'block';
+                        iconPause.style.display = 'none';
+                        btn.style.background = '';
+                    }else{
+                        iconPlay.style.display = 'none';
+                        iconPause.style.display = 'block';
+                        btn.style.background = '#2D6A4F'; // verde navideño
+                    }
+                }
+                function updateMuteIcon() {
+                    if(audio.muted){
+                        iconMute.style.display = 'block';
+                        iconUnmute.style.display = 'none';
+                    }else{
+                        iconMute.style.display = 'none';
+                        iconUnmute.style.display = 'block';
+                    }
+                }
+                btn.addEventListener('click', function(){
+                    if(audio.paused){
+                        audio.play();
+                    }else{
+                        audio.pause();
+                    }
+                    updatePlayIcon();
+                });
+                muteBtn.addEventListener('click', function(){
+                    audio.muted = !audio.muted;
+                    updateMuteIcon();
+                });
+                audio.addEventListener('play', updatePlayIcon);
+                audio.addEventListener('pause', updatePlayIcon);
+                audio.addEventListener('volumechange', updateMuteIcon);
+                updatePlayIcon();
+                updateMuteIcon();
             })();
             // =================================================================
 
@@ -486,104 +559,58 @@
 
             // ================== CONTROL DE MÚSICA NAVIDEÑA ==================
             (function initChristmasMusic() {
-                // Permitir reproducir tras cualquier interacción inicial
-                document.body.addEventListener('click', function enableAudioOnce() {
-                    const audio = document.getElementById('christmas-audio');
-                    if (audio && audio.paused) {
-                        audio.play().catch(() => { });
-                    }
-                    document.body.removeEventListener('click', enableAudioOnce);
-                });
                 const audio = document.getElementById('christmas-audio');
                 const btn = document.getElementById('play-music');
                 const muteBtn = document.getElementById('mute-music');
-                if (!audio || !btn) return;
-                let fading = false;
-                audio.volume = 0; // inicio silencioso
-
-                function fadeTo(target, duration = 1200) {
-                    return new Promise(res => {
-                        const startVol = audio.volume;
-                        const delta = target - startVol;
-                        const start = performance.now();
-                        fading = true;
-                        function step(t) {
-                            const prog = Math.min(1, (t - start) / duration);
-                            audio.volume = +(startVol + delta * prog).toFixed(3);
-                            if (prog < 1 && fading) {
-                                requestAnimationFrame(step);
-                            } else { fading = false; audio.volume = target; res(); }
-                        }
-                        requestAnimationFrame(step);
-                    });
-                }
-
-                async function playMusic() {
-                    try {
-                        if (audio.paused) { await audio.play(); }
-                        btn.classList.add('playing');
-                        btn.setAttribute('aria-pressed', 'true');
-                        btn.querySelector('.status-action').textContent = 'Pausar';
-                        fadeTo(1, 1800);
-                        sessionStorage.setItem('vc_music', 'on');
-                    } catch (e) {
-                        console.warn('No se pudo reproducir. Verifica que exista media/villancico.mp3 (o .ogg/.webm) y que el usuario haya interactuado. Error:', e);
-                        btn.querySelector('.status-action').textContent = 'Archivo faltante';
-                        btn.classList.remove('playing');
+                const iconPlay = document.getElementById('icon-play');
+                const iconPause = document.getElementById('icon-pause');
+                const iconMute = document.getElementById('icon-mute');
+                const iconUnmute = document.getElementById('icon-unmute');
+                if (!audio || !btn || !muteBtn || !iconPlay || !iconPause || !iconMute || !iconUnmute) return;
+                audio.loop = true;
+                // Autoplay al cargar la página
+                setTimeout(function() {
+                    audio.play().catch(()=>{});
+                }, 300);
+                function updatePlayIcon() {
+                    if(audio.paused){
+                        iconPlay.style.display = 'block';
+                        iconPause.style.display = 'none';
+                        btn.style.background = '';
+                    }else{
+                        iconPlay.style.display = 'none';
+                        iconPause.style.display = 'block';
+                        btn.style.background = '#2D6A4F'; // verde navideño
                     }
                 }
-
-                async function pauseMusic() {
-                    btn.classList.remove('playing');
-                    btn.setAttribute('aria-pressed', 'false');
-                    btn.querySelector('.status-action').textContent = 'Reproducir';
-                    await fadeTo(0, 800);
-                    audio.pause();
-                    sessionStorage.setItem('vc_music', 'off');
+                function updateMuteIcon() {
+                    if(audio.muted){
+                        iconMute.style.display = 'block';
+                        iconUnmute.style.display = 'none';
+                    }else{
+                        iconMute.style.display = 'none';
+                        iconUnmute.style.display = 'block';
+                    }
                 }
-
-                btn.addEventListener('click', () => {
-                    if (btn.classList.contains('playing')) { pauseMusic(); } else { playMusic(); }
+                btn.addEventListener('click', function() {
+                    if(audio.paused){
+                        audio.play();
+                    }else{
+                        audio.pause();
+                    }
+                    updatePlayIcon();
                 });
-
-                // Restaurar estado si usuario ya activó en esta sesión
-                if (sessionStorage.getItem('vc_music') === 'on') {
-                    playMusic();
-                }
-
-                // Mute / Unmute (sin pausar track)
-                if (muteBtn) {
-                    let previousVol = 1;
-                    function setMuted(state) {
-                        muteBtn.setAttribute('aria-pressed', state ? 'true' : 'false');
-                        const actionSpan = muteBtn.querySelector('.mute-action');
-                        const iconOn = muteBtn.querySelector('.icon-sound-on');
-                        const iconOff = muteBtn.querySelector('.icon-sound-off');
-                        if (state) {
-                            previousVol = audio.volume > 0 ? audio.volume : previousVol;
-                            audio.muted = true;
-                            actionSpan.textContent = 'Unmute';
-                            iconOn.style.display = 'none';
-                            iconOff.style.display = 'block';
-                            sessionStorage.setItem('vc_music_muted', 'yes');
-                        } else {
-                            audio.muted = false;
-                            if (audio.volume === 0 && btn.classList.contains('playing')) audio.volume = previousVol;
-                            actionSpan.textContent = 'Mute';
-                            iconOn.style.display = 'block';
-                            iconOff.style.display = 'none';
-                            sessionStorage.setItem('vc_music_muted', 'no');
-                        }
-                    }
-                    muteBtn.addEventListener('click', () => {
-                        const isMuted = muteBtn.getAttribute('aria-pressed') === 'true';
-                        setMuted(!isMuted);
-                    });
-                    if (sessionStorage.getItem('vc_music_muted') === 'yes') setMuted(true);
-                }
+                muteBtn.addEventListener('click', function() {
+                    audio.muted = !audio.muted;
+                    updateMuteIcon();
+                });
+                audio.addEventListener('play', updatePlayIcon);
+                audio.addEventListener('pause', updatePlayIcon);
+                audio.addEventListener('volumechange', updateMuteIcon);
+                updatePlayIcon();
+                updateMuteIcon();
             })();
             // =================================================================
-        });
     </script>
 
     <script>
@@ -680,3 +707,73 @@
             });
         });
     </script>
+</script> }
+    <script>
+        // Efecto de nieve con canvas
+        document.addEventListener('DOMContentLoaded', function () {
+            const canvas = document.getElementById('snow-canvas');
+            if (!canvas) return; // Si no hay canvas, no hacer nada
+
+            const ctx = canvas.getContext('2d');
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+
+            const numFlakes = 100;
+            const flakes = [];
+
+            function random(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            function createFlakes() {
+                for (let i = 0; i < numFlakes; i++) {
+                    flakes.push({
+                        x: random(0, width),
+                        y: random(0, height),
+                        radius: random(1, 4),
+                        density: random(1, 3)
+                    });
+                }
+            }
+
+            function drawFlakes() {
+                ctx.clearRect(0, 0, width, height);
+                ctx.fillStyle = 'white';
+                ctx.beginPath();
+                for (let i = 0; i < numFlakes; i++) {
+                    const f = flakes[i];
+                    ctx.moveTo(f.x, f.y);
+                    ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2, true);
+                }
+                ctx.fill();
+                moveFlakes();
+            }
+
+            let angle = 0;
+
+            function moveFlakes() {
+                angle += 0.01;
+                for (let i = 0; i < numFlakes; i++) {
+                    const f = flakes[i];
+                    f.y += Math.pow(f.density, 2) + 1;
+                    f.x += Math.sin(angle) * 2;
+
+                    if (f.y > height) {
+                        flakes[i] = { x: random(0, width), y: 0, radius: f.radius, density: f.density };
+                    }
+                }
+            }
+
+            function updateCanvasSize() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            }
+
+            window.addEventListener('resize', updateCanvasSize);
+
+            createFlakes();
+            setInterval(drawFlakes, 33)} )}) // Apro
