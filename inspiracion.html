@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inspiración - Valens Christmas</title>
+  <link rel="icon" href="medios/logo valents.PNG" type="image/png">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <div id="navbar"></div>
+  <main>
+    <section id="inspiracion" class="content-section">
+      <h2>Galería de Inspiración</h2>
+      <p>Deja que estas imágenes te inspiren para crear tu propia obra de arte navideña. Combina, crea y comparte la magia.</p>
+      
+      <div class="inspiration-gallery">
+        <img src="medios/inspiracion1.jpg" alt="Árbol de Navidad decorado con estilo rústico">
+        <img src="medios/inspiracion2.jpg" alt="Mesa de Navidad elegantemente servida">
+        <img src="medios/inspiracion3.jpg" alt="Detalle de guirnalda en una chimenea">
+        <img src="medios/inspiracion4.jpg" alt="Rincón de lectura con ambiente navideño">
+        <img src="medios/inspiracion5.jpg" alt="Decoración exterior con luces de Navidad">
+        <img src="medios/inspiracion6.jpg" alt="Centro de mesa navideño con velas y piñas">
+      </div>
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script type="module">
+    import { renderNavbar, navbarScript } from './assets/navbar.js';
+    import { renderFooter } from './assets/footer.js';
+    document.getElementById('navbar').innerHTML = renderNavbar();
+    document.getElementById('footer').innerHTML = renderFooter();
+    navbarScript();
+  </script>
+</body>
+</html>

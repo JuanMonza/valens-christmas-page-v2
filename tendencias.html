@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tendencias - Valens Christmas</title>
+  <link rel="icon" href="medios/logo valents.PNG" type="image/png">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <div id="navbar"></div>
+  <main>
+    <section id="tendencias" class="content-section fade-in">
+      <h2>Tendencias Navideñas 2025</h2>
+      <p>Descubre las paletas de colores, materiales y estilos que marcarán la pauta esta Navidad. Desde el minimalismo escandinavo hasta la opulencia del "vintage glam", te mostramos cómo aplicarlas en tu hogar.</p>
+      
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="medios/tendencia1.jpg" alt="Tendencia de Navidad 1">
+          <h3>Bosque Encantado</h3>
+          <p>Tonos tierra, maderas naturales y detalles de animales del bosque para una Navidad rústica y acogedora.</p>
+        </div>
+        <div class="gallery-item">
+          <img src="medios/tendencia2.jpg" alt="Tendencia de Navidad 2">
+          <h3>Cielo Estrellado</h3>
+          <p>Azules profundos, platas y dorados que evocan una noche invernal mágica y elegante.</p>
+        </div>
+        <div class="gallery-item">
+          <img src="medios/tendencia3.jpg" alt="Tendencia de Navidad 3">
+          <h3>Dulce Navidad</h3>
+          <p>Colores pastel, adornos con formas de dulces y un toque divertido para una celebración llena de fantasía.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script type="module">
+    import { renderNavbar, navbarScript } from './assets/navbar.js';
+    import { renderFooter } from './assets/footer.js';
+    document.getElementById('navbar').innerHTML = renderNavbar();
+    document.getElementById('footer').innerHTML = renderFooter();
+    navbarScript();
+  </script>
+</body>
+</html>

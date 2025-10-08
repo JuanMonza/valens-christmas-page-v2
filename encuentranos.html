@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encuéntranos - Valens Christmas</title>
+  <link rel="icon" href="medios/logo valents.PNG" type="image/png">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <div id="navbar"></div>
+  <main>
+    <section id="encuentranos-comercializa" class="content-section" style="padding: 40px 20px; text-align: center;">
+      <h2>Visítanos o Sé Nuestro Aliado</h2>
+      <p>Estamos ubicados en el corazón de la ciudad, listos para recibirte. Si tienes una tienda y te gustaría vender nuestros productos, contáctanos.</p>
+      
+      <div class="contact-container">
+        <div class="map-container">
+          <h3>Nuestra Tienda Principal</h3>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3922.7269999999997!2d-69.9388!3d10.4635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e8d48b6e3b7b9b1%3A0x5f6d4b3b3b3b3b3b!2sPlaza%20Bol%C3%ADvar%2C%20Caracas!5e0!3m2!1ses!2sve!4v1633626488454!5m2!1ses!2sve" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        
+        <div class="form-container">
+          <h3>Conviértete en Distribuidor</h3>
+          <form action="#" method="POST">
+            <input type="text" name="name" placeholder="Nombre Completo" required>
+            <input type="email" name="email" placeholder="Correo Electrónico" required>
+            <input type="text" name="store_name" placeholder="Nombre de tu Tienda" required>
+            <textarea name="message" placeholder="Cuéntanos sobre tu negocio..." rows="4" required></textarea>
+            <button type="submit" class="btn-submit">Enviar Solicitud</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script type="module">
+    import { renderNavbar, navbarScript } from './assets/navbar.js';
+    import { renderFooter } from './assets/footer.js';
+    document.getElementById('navbar').innerHTML = renderNavbar();
+    document.getElementById('footer').innerHTML = renderFooter();
+    navbarScript();
+  </script>
+</body>
+</html>

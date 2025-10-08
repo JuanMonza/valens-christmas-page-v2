@@ -1,0 +1,754 @@
+/* Animación de entrada para secciones */
+.animated-section {
+	opacity: 0;
+	transform: translateY(40px);
+	animation: fadeInUp 1.2s cubic-bezier(.42,0,.58,1) forwards;
+}
+
+@keyframes fadeInUp {
+	from { opacity: 0; transform: translateY(40px);}
+	to { opacity: 1; transform: translateY(0);}
+}
+
+/* ====================================================
+   ESTILOS GENERALES DE TÍTULOS
+   ==================================================== */
+h2 {
+    text-align: center;
+    color: var(--color-primary);
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+/* ====================================================
+   ESTILOS NAVBAR
+   ==================================================== */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 24px rgba(44, 106, 79, 0.10);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+.site-branding {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-logo-link .custom-logo {
+    height: 120px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 12px #e63946aa);
+    transition: all .3s;
+}
+
+.main-navigation {
+    flex: 1;
+}
+
+.menu-toggle {
+    margin-left: auto;
+}
+
+.main-menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.main-menu a {
+    font-size: 1.15rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all .3s;
+    text-decoration: none;
+    color: #2D6A4F;
+}
+
+.main-menu a:hover {
+    background: #E63946;
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Estilos para la Calculadora Mágica */
+.calculator-box.mejorada {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.calculator-box.mejorada .input-group {
+    margin-bottom: 20px;
+}
+
+.calculator-box.mejorada label {
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.calculator-box.mejorada input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.calculator-box.mejorada .height-display-container {
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-dark);
+}
+
+.calculator-box.mejorada #height_display {
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.calculator-box.mejorada fieldset {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.calculator-box.mejorada legend {
+    padding: 0 10px;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.calculator-box.mejorada .tree-options-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.calculator-box.mejorada .tree-option {
+    flex: 1;
+    margin: 0 10px;
+    cursor: pointer;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    text-align: center;
+    transition: border-color 0.3s;
+}
+
+.calculator-box.mejorada .tree-option input[type="radio"] {
+    display: none;
+}
+
+.calculator-box.mejorada .tree-option.selected {
+    border-color: var(--color-primary);
+}
+
+.calculator-box.mejorada #calculate_btn {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.calculator-box.mejorada #calculate_btn:hover {
+    background: #c52b38;
+}
+
+.calculator-box.mejorada #results {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s, transform 0.5s, max-height 0.5s;
+}
+
+.calculator-box.mejorada #results.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 2000px;
+}
+
+.calculator-box.mejorada .results-content {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+.calculator-box.mejorada .result-item {
+    margin-bottom: 10px;
+}
+
+.calculator-box.mejorada .result-item strong {
+    color: var(--color-primary);
+}
+
+.calculator-box.mejorada .result-item span {
+    font-size: 1.2rem;
+}
+
+.calculator-box.mejorada #res_lights_bulbs {
+    font-size: 0.9rem;
+    color: var(--color-dark);
+}
+
+/* Fin Estilos Calculadora */
+
+/* ----------------------------------------------------\
+   HERO SECTION
+   ---------------------------------------------------- */
+/* Hero Section mejorada */
+.hero-section {
+	position: relative;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	color: var(--color-light); /* Texto blanco para el contenido del hero */
+}
+.hero-video {
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	object-fit: cover;
+	z-index: 0;
+	pointer-events: none;
+}
+.shadow-gradient {
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	background: linear-gradient(180deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.85) 100%);
+	z-index: 1;
+}
+.hero-content {
+	position: relative;
+	z-index: 2;
+}
+
+body.home-page {
+    background-image: url('../medios/239.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.content-section {
+    padding: 60px 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente para mejorar la legibilidad */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 15px;
+    margin: 20px auto;
+    padding: 40px;
+    max-width: 1200px;
+}
+
+/* Hacemos la sección del héroe transparente para que se vea el fondo del body */
+.hero-section {
+    background-color: transparent;
+}
+
+
+.logo-container img,
+.custom-logo-link img {
+	max-width: 100%;
+	height: auto;
+}
+.custom-logo {
+	width: auto;
+	height: 120px;
+	transition: all 0.3s ease;
+}
+.main-navigation {
+	display: flex;
+	align-items: center;
+}
+.main-menu {
+	display: flex;
+	gap: 1.5rem;
+}
+.main-menu a {
+	font-size: 1.3rem;
+	font-weight: 600;
+	padding: 0.5rem 1rem;
+	transition: all 0.3s ease;
+	text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+@keyframes fadeInDown {
+
+}
+
+@keyframes fadeInUp {
+	from { opacity: 0; transform: translateY(40px);}
+	to { opacity: 1; transform: translateY(0);}
+}
+.fade-in {
+	opacity: 0;
+	animation: fadeInUp 1s cubic-bezier(.42,0,.58,1) forwards;
+}
+
+/* ----------------------------------------------------\
+   5. CONTADOR REGRESIVO
+   ---------------------------------------------------- */
+.countdown-container {
+	background: linear-gradient(45deg, var(--color-green), var(--color-primary));
+	color: var(--color-light);
+	padding: 40px 20px;
+	text-align: center;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+	position: relative;
+	overflow: hidden;
+}
+
+.countdown-container::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="%23ffffff20"><circle cx="25" cy="25" r="1"/></svg>') repeat;
+	opacity: 0.1;
+}
+
+.countdown-container h2 {
+	color: var(--color-light);
+	font-size: 1.5rem;
+	margin-bottom: 30px;
+	font-weight: 400;
+	text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Ajustes responsive adicionales del bloque contador / controles de audio */
+@media (max-width: 720px){
+	#countdown-timer{flex-wrap:wrap;gap:18px;margin-right:0;}
+	.time-unit{padding:12px 18px;}
+	.time-unit span:first-child{font-size:2.6rem;}
+}
+@media (max-width: 560px){
+	.countdown-container{padding:28px 18px !important;}
+	#countdown-timer{justify-content:center;}
+	#play-music,#mute-music{width:100%;margin-left:0 !important;margin-top:6px;}
+	#play-music .status-label{min-width:auto;}
+}
+@media (max-width:400px){
+	.time-unit{min-width:70px;}
+	.time-unit span:first-child{font-size:2.2rem;}
+}
+
+#countdown-timer {
+	display: flex;
+	justify-content: center;
+	gap: 30px;
+	margin-right: 40px;
+}
+
+.time-unit {
+	display: flex;
+	flex-direction: column;
+	background: rgba(255,255,255,0.1);
+	padding: 15px 25px;
+	border-radius: 12px;
+	backdrop-filter: blur(5px);
+	box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+	align-items: center;
+	font-weight: bold;
+}
+
+.time-unit span:first-child {
+	font-size: 3.5rem;
+	color: var(--color-secondary);
+	line-height: 1;
+	margin-bottom: 5px;
+	/* Animación de pulsación festiva */
+	animation: pulse 1.5s infinite alternate; 
+}
+
+@keyframes pulse {
+	from {
+		text-shadow: 0 0 5px rgba(255, 196, 0, 0.5);
+	}
+	to {
+		text-shadow: 0 0 15px var(--color-secondary), 0 0 20px var(--color-secondary);
+	}
+}
+
+.time-unit span:last-child {
+	font-size: 0.9rem;
+	text-transform: uppercase;
+}
+
+/* ----------------------------------------------------\
+   6. GRID DE TARJETAS (Tendencias, Colecciones, Inspiración, Encuéntranos)
+   ---------------------------------------------------- */
+.card-grid {
+	display: grid;
+	/* Layout responsivo: mínimo 300px por columna */
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+	gap: 30px;
+	margin-top: 50px;
+}
+
+.card {
+	background: var(--color-light);
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+	transition: transform 0.3s, box-shadow 0.3s;
+	text-align: center; /* Por defecto para colecciones/tendencias */
+}
+
+.card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 0 10px rgba(255, 196, 0, 0.5); /* Efecto dorado sutil al pasar */
+}
+
+.card img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.card-body {
+	padding: 25px;
+}
+
+.card-body h3 {
+	color: var(--color-primary);
+	margin-bottom: 10px;
+}
+
+.card a {
+	color: var(--color-primary);
+	text-decoration: none;
+	font-weight: 600;
+	transition: color 0.3s;
+}
+
+.card a:hover {
+	color: var(--color-secondary);
+}
+
+/* Estilo para que toda la tarjeta sea un enlace */
+.card-link {
+	text-decoration: none;
+	color: inherit; /* Hereda el color del texto para no tener subrayados azules */
+	display: block; /* Asegura que el enlace ocupe todo el espacio de la tarjeta */
+}
+
+/* ----------------------------------------------------\
+   7. CALCULADORA DE ADORNOS
+   ---------------------------------------------------- */
+#calculadora {
+	background-color: transparent !important;
+}
+
+.calculator-box {
+	border: 1px solid var(--color-border);
+	background: var(--color-light);
+}
+
+.calculator-box label {
+	font-size: 1rem;
+	color: var(--color-dark);
+}
+
+.calculator-box select,
+.calculator-box input[type="number"] {
+	appearance: none;
+	-webkit-appearance: none;
+	background-color: #fafafa;
+	border: 1px solid var(--color-border) !important;
+	font-size: 1rem;
+}
+
+.calculator-box button[type="submit"] {
+	background-color: var(--color-primary) !important;
+	transition: background-color 0.3s ease;
+}
+
+.calculator-box button[type="submit"]:hover {
+	background-color: #800000; /* Rojo más oscuro al pasar el mouse */
+}
+
+#results {
+	border-color: var(--color-border) !important;
+}
+
+#results strong {
+	color: var(--color-primary);
+	font-weight: 700;
+}
+
+/* ----------------------------------------------------\
+   8. TESTIMONIOS
+   ---------------------------------------------------- */
+.testimonials-section {
+	background: var(--color-secondary);
+	padding: 40px 0;
+	text-align: center;
+}
+.testimonials {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px;
+	justify-content: center;
+}
+.testimonial-card {
+	background: var(--color-gold);
+	border-radius: 18px;
+	box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+	padding: 24px;
+	max-width: 260px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.testimonial-img {
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	margin-bottom: 12px;
+	border: 3px solid var(--color-primary);
+}
+.testimonial-text {
+	font-style: italic;
+	margin-bottom: 10px;
+}
+.testimonial-name {
+	font-weight: bold;
+	color: var(--color-primary);
+}
+
+/* ----------------------------------------------------\
+   9. GALERÍA
+   ---------------------------------------------------- */
+.gallery-section {
+	background: var(--color-accent);
+	padding: 40px 0;
+	text-align: center;
+}
+.gallery-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 18px;
+	margin-top: 24px;
+}
+.gallery-grid img {
+	width: 100%;
+	border-radius: 12px;
+	box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+	border: 3px solid var(--color-gold);
+	transition: transform 0.2s;
+}
+.gallery-grid img:hover {
+	transform: scale(1.07) rotate(-2deg);
+	border-color: var(--color-primary);
+}
+
+/* ----------------------------------------------------\
+   10. MEDIA QUERIES (Responsividad)
+   ---------------------------------------------------- */
+@media (max-width: 768px) {
+	/* Header Responsive */
+	.main-menu {
+		flex-direction: column;
+		gap: 5px;
+		padding-top: 10px;
+	}
+    
+	.site-header {
+		padding: 10px 0;
+		background: rgba(190, 25, 25, 0.2);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		border: none;
+		box-shadow: none;
+	}
+    
+	h2 {
+		font-size: 2rem;
+	}
+    
+	.content-section {
+		padding: 50px 15px;
+	}
+}@media (max-width: 480px) {
+	.time-unit span:first-child {
+		font-size: 2rem;
+	}
+	.countdown-container h2 {
+		font-size: 1.2rem;
+	}
+}
+
+.christmas-btn {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	background: linear-gradient(90deg, var(--color-primary) 60%, var(--color-gold) 100%);
+	color: var(--color-secondary);
+	border: none;
+	border-radius: 40px;
+	padding: 12px 28px;
+	font-size: 1.15rem;
+	font-weight: bold;
+	box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+	cursor: pointer;
+	transition: background 0.3s, transform 0.2s;
+	margin-top: 24px;
+	outline: none;
+}
+.christmas-btn:hover {
+	background: linear-gradient(90deg, var(--color-gold) 60%, var(--color-primary) 100%);
+	transform: scale(1.05);
+}
+.btn-icon {
+	display: flex;
+	align-items: center;
+}
+.btn-text {
+	font-family: 'Montserrat', Arial, sans-serif;
+	letter-spacing: 1px;
+}
+.social-icons {
+	display: flex;
+	gap: 18px;
+	margin-top: 18px;
+	justify-content: center;
+}
+.social-icon img {
+	width: 36px;
+	height: 36px;
+	filter: drop-shadow(0 2px 8px var(--color-gold));
+	transition: transform 0.2s;
+}
+.social-icon:hover img {
+	transform: scale(1.15) rotate(-8deg);
+}
+.crystal-btn {
+	background: #E63946;
+	color: #fff;
+	border: none;
+	box-shadow: 0 4px 15px rgba(230,57,70,0.4);
+	border-radius: 40px;
+	padding: 14px 32px;
+	font-size: 1.15rem;
+	font-weight: bold;
+	transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+	margin-left: 30px;
+	cursor: pointer;
+}
+.crystal-btn:hover {
+	background: #d62f3c;
+	box-shadow: 0 6px 20px rgba(230,57,70,0.6);
+	transform: scale(1.05);
+}
+
+.crystal-menu-item {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.crystal-menu-item:hover, .crystal-menu-item:focus {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  color: #fff;
+  outline: none;
+}
+
+/* ====== MENÚ HAMBURGUESA + OVERLAY ====== */
+.menu-toggle{position:relative;background:rgba(255,255,255,.8);border:2px solid var(--color-primary);padding:10px 14px;border-radius:14px;cursor:pointer;display:none;margin-left:auto;backdrop-filter:blur(4px);transition:all .3s;}
+.menu-toggle:hover{background:var(--color-primary);} .menu-toggle:hover .hamburger,.menu-toggle:hover .hamburger:before,.menu-toggle:hover .hamburger:after{background:#fff;}
+.hamburger{display:block;width:28px;height:3px;background:var(--color-primary);position:relative;border-radius:2px;transition:all .4s;}
+.hamburger:before,.hamburger:after{content:"";position:absolute;left:0;width:28px;height:3px;background:var(--color-primary);border-radius:2px;transition:all .4s;}
+.hamburger:before{top:-8px;} .hamburger:after{top:8px;}
+.menu-toggle.active .hamburger{background:transparent;} .menu-toggle.active .hamburger:before{top:0;transform:rotate(45deg);} .menu-toggle.active .hamburger:after{top:0;transform:rotate(-45deg);} 
+.main-menu.mobile {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	position: fixed;
+	inset: 0;
+	padding: 150px 40px 60px;
+	background: linear-gradient(135deg, #E63946 0%, #FFD700 100%);
+	box-shadow: 0 8px 32px rgba(230,57,70,0.18);
+	backdrop-filter: blur(10px);
+	transform: translateY(-100%);
+	opacity: 0;
+	pointer-events: none;
+	z-index: 1400;
+	overflow-y: auto;
+	transition: all .45s cubic-bezier(.6,.2,.15,1);
+}
+.main-menu.mobile.open{transform:translateY(0);opacity:1;pointer-events:auto;} .main-menu.mobile a{font-size:1.5rem;color:var(--color-primary);text-shadow:none;}
+@media (min-width:901px){.menu-toggle{display:none;} .custom-logo{height:220px !important;} }
+@media (max-width:900px){.menu-toggle{display:block !important;z-index:1500;} .main-menu{display:none;} .site-header{padding:6px 0 !important;background:rgba(255,255,255,0.55)!important;} .custom-logo{height:230px !important;} .hero-section{padding-top:250px;} }
+@media (max-width:600px){.custom-logo{height:190px !important;} .hero-section{padding-top:225px;} }
+/* ====== CTA WHATSAPP ====== */
+/* Estilos de botón WhatsApp eliminados */
+/* Botón música */
+#play-music{position:relative;overflow:hidden;transition:background .4s,transform .3s;}
+#play-music.playing{background:linear-gradient(135deg,#06b347,#0e8f39);box-shadow:0 0 0 3px rgba(255,255,255,.25),0 8px 22px -6px rgba(0,0,0,.45);}
+#play-music .equalizer{display:inline-flex;align-items:flex-end;gap:2px;margin-left:8px;}
+#play-music .bar{width:3px;height:4px;background:#fff;animation:equalize 1s infinite ease-in-out;animation-play-state:paused;opacity:.7;border-radius:2px;}
+#play-music.playing .bar{animation-play-state:running;}
+#play-music .bar:nth-child(2){animation-delay:.2s}
+#play-music .bar:nth-child(3){animation-delay:.4s}
+#play-music .bar:nth-child(4){animation-delay:.6s}
+@keyframes equalize{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+#play-music .status-label{display:inline-block;min-width:120px;text-align:left;}
+/* Botón Mute (mismo diseño que crystal-btn) */
+#mute-music{position:relative;overflow:hidden;transition:background .4s,transform .3s;}
+#mute-music[aria-pressed="true"]{background:linear-gradient(135deg,#E63946,#9b1c26);box-shadow:0 0 0 3px rgba(255,255,255,.25),0 8px 22px -6px rgba(0,0,0,.45);}
+#mute-music:hover{transform:translateY(-6px);} 
+#mute-music .btn-icon{display:inline-flex;align-items:center;justify-content:center;}
+
+#countdown {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}

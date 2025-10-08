@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="medios/logo valents.PNG" type="image/png">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <title>Valens Christmas - Inicio</title>
+</head>
+<body>
+  <div id="navbar"></div>
+  <main>
+    <!-- Secciones principales, sin la calculadora -->
+    <section id="inicio" class="hero-section fade-in">
+      <!-- ...contenido hero... -->
+    </section>
+    <section id="magia" class="content-section fade-in">
+      <!-- ...contenido magia... -->
+    </section>
+    <section id="productos-destacados" class="content-section fade-in">
+      <!-- ...contenido productos... -->
+    </section>
+    <section id="categorias" class="content-section fade-in">
+      <!-- ...contenido categorías... -->
+    </section>
+    <section id="sobre-nosotros" class="content-section fade-in">
+      <!-- ...contenido historia... -->
+    </section>
+    <section id="tendencias" class="content-section fade-in">
+      <!-- ...contenido tendencias... -->
+    </section>
+    <section id="colecciones" class="content-section">
+      <!-- ...contenido colecciones... -->
+    </section>
+    <section id="inspiracion" class="content-section">
+      <!-- ...contenido inspiración... -->
+    </section>
+    <section class="gallery-section">
+      <!-- ...contenido galería... -->
+    </section>
+    <section id="testimonios" class="content-section fade-in">
+      <!-- ...contenido testimonios... -->
+    </section>
+    <section class="social-section" style="text-align: center; padding: 40px 0;">
+      <!-- ...contenido redes sociales... -->
+    </section>
+    <section id="encuentranos-comercializa" style="background: linear-gradient(90deg, #E63946 60%, #e80404 100%); color: #fff; padding: 48px 20px; text-align: center;">
+      <!-- ...contenido comercializa... -->
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script type="module">
+    import { renderNavbar, navbarScript } from './assets/navbar.js';
+    import { renderFooter } from './assets/footer.js';
+    document.getElementById('navbar').innerHTML = renderNavbar();
+    document.getElementById('footer').innerHTML = renderFooter();
+    navbarScript();
+  </script>
+</body>
+</html>
