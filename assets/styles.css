@@ -43,7 +43,7 @@ p {
 .section-img {
     width: 320px;
     max-width: 90vw;
-    height: 220px;
+    height: 550px;
     object-fit: cover;
     border-radius: 18px;
     box-shadow: 0 4px 18px rgba(230,57,70,0.13);
@@ -58,7 +58,7 @@ p {
 @media (max-width: 600px) {
     .section-img {
         width: 98vw;
-        height: 160px;
+        height: 550px;
         margin-bottom: 18px;
     }
     .section-images {
@@ -165,6 +165,54 @@ h2 {
     color: #E63946; /* Letras rojas al pasar el ratón */
     text-decoration: none;
 }
+
+/* Estilos para el menú hamburguesa y modo móvil */
+@media (max-width: 900px) {
+    .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .menu-toggle {
+        display: block; /* Muestra el botón de hamburguesa */
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 1001; /* Asegura que esté por encima de otros elementos */
+    }
+
+    .main-menu {
+        display: none; /* Oculto por defecto */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Justo debajo del header */
+        left: 0;
+        right: 0;
+        background: rgba(236, 57, 72, 0.95); /* Fondo rojo translúcido */
+        padding: 1rem 0;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+
+    .main-menu.open {
+        display: flex; /* Se muestra cuando tiene la clase 'open' */
+    }
+
+    .main-menu a {
+        padding: 1rem;
+        text-align: center;
+        width: 100%;
+        border-radius: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .main-menu li:last-child a {
+        border-bottom: none;
+    }
+}
+
 
 /* Estilos para la imagen de la sección "Nuestra Historia" */
 .nuestra-historia-logo {
@@ -859,9 +907,10 @@ body.home-page {
 	position: fixed;
 	inset: 0;
 	padding: 150px 40px 60px;
-	background: linear-gradient(135deg, #E63946 0%, #FFD700 100%);
+	background: rgba(236, 57, 72, 0.95); /* Mismo color que el header de escritorio, pero más opaco */
 	box-shadow: 0 8px 32px rgba(230,57,70,0.18);
 	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
 	transform: translateY(-100%);
 	opacity: 0;
 	pointer-events: none;
@@ -1076,7 +1125,7 @@ body.home-page {
 .inspiration-gallery img,
 .collection-card img {
     width: 100%;
-    height: 250px; /* Altura fija para uniformidad */
+    height: 550px; /* Altura fija para uniformidad */
     object-fit: cover; /* Evita que la imagen se deforme */
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -1215,6 +1264,7 @@ body.home-page {
     display: flex;
     justify-content: center;
     gap: 1rem;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
 }
 
 .tree-options-container .tree-option {

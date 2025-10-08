@@ -41,6 +41,7 @@ export function navbarScript() {
     var menuToggle = document.getElementById('menu-toggle');
     var mainMenu = document.getElementById('primary-menu');
     var hamburger = menuToggle.querySelector('.hamburger');
+    
     // Animación hamburguesa
     hamburger.innerHTML = '<span></span><span></span><span></span>';
     hamburger.style.display = 'inline-block';
@@ -52,73 +53,53 @@ export function navbarScript() {
       bar.style.left = '0';
       bar.style.width = '100%';
       bar.style.height = '4px';
-      bar.style.background = '#E63946';
+      bar.style.background = '#fff'; // Color blanco para contraste
       bar.style.borderRadius = '2px';
       bar.style.transition = 'all .4s';
       bar.style.top = (i*9)+'px';
     });
+
     menuToggle.addEventListener('click', function() {
-      mainMenu.classList.toggle('open');
-      var expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', !expanded);
-      if(mainMenu.classList.contains('open')){
-        mainMenu.style.display = 'flex';
+      const isOpen = mainMenu.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      
+      if (isOpen) {
         // Animación hamburguesa abierta
         hamburger.children[0].style.transform = 'translateY(9px) rotate(45deg)';
         hamburger.children[1].style.opacity = '0';
         hamburger.children[2].style.transform = 'translateY(-9px) rotate(-45deg)';
       } else {
-        mainMenu.style.display = '';
+        // Animación hamburguesa cerrada
         hamburger.children[0].style.transform = '';
         hamburger.children[1].style.opacity = '1';
         hamburger.children[2].style.transform = '';
       }
     });
-    // Responsive: ocultar menú en móvil
-    function checkMenu(){
-      if(window.innerWidth <= 900){
-        mainMenu.style.display = 'none';
-      }else{
-        mainMenu.style.display = 'flex';
+
+    // Gestionar visibilidad al cambiar tamaño de ventana
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 900) {
         mainMenu.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
         hamburger.children[0].style.transform = '';
         hamburger.children[1].style.opacity = '1';
         hamburger.children[2].style.transform = '';
       }
-    }
-    window.addEventListener('resize', checkMenu);
-    checkMenu();
-    // Cerrar menú hamburguesa al hacer clic en una opción
+    });
+
+    // Cerrar menú al hacer clic en un enlace
     var menuLinks = mainMenu.querySelectorAll('a');
     menuLinks.forEach(function(link){
       link.addEventListener('click', function(){
         if(window.innerWidth <= 900){
           mainMenu.classList.remove('open');
-          menuToggle.setAttribute('aria-expanded', false);
-          menuToggle.disabled = true;
-          mainMenu.style.display = 'none';
+          menuToggle.setAttribute('aria-expanded', 'false');
           hamburger.children[0].style.transform = '';
           hamburger.children[1].style.opacity = '1';
           hamburger.children[2].style.transform = '';
-          setTimeout(function(){ menuToggle.disabled = false; }, 700);
         }
       });
     });
-    // Hover efecto en links con CSS. Este código ya no es necesario.
-    /*
-    menuLinks.forEach(function(link){
-      link.addEventListener('mouseenter',function(){
-        link.style.background = '#E63946';
-        link.style.color = '#fff';
-        link.style.textDecoration = 'underline';
-      });
-      link.addEventListener('mouseleave',function(){
-        link.style.background = '';
-        link.style.color = '#2D6A4F';
-        link.style.textDecoration = 'none';
-      });
-    });
-    */
   });
 }
 
