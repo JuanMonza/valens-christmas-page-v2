@@ -1,3 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap');
+
+/* ==========================================================================
+   Estilos Base
+   ========================================================================== */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #f1faee;
+    color: #1d3557;
+    margin: 0;
+    padding-top: 80px; /* Ajuste para la barra de navegación fija */
+}
+
+h1, h2, h3 {
+    font-family: 'Mountains of Christmas', cursive;
+    font-weight: 700;
+    color: #d62828; /* Un rojo navideño más intenso */
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin: 0 0 1rem 0;
+    line-height: 1.5;
+    color: #333;
+}
+
 /* Imágenes de las secciones principales */
 .section-images {
     display: flex;
@@ -375,58 +409,24 @@ body.home-page {
 
 .content-section {
     padding: 60px 20px;
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente para mejorar la legibilidad */
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border-radius: 15px;
-    margin: 20px auto;
-    padding: 40px;
     max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    backdrop-filter: blur(5px);
 }
 
-/* Hacemos la sección del héroe transparente para que se vea el fondo del body */
-.hero-section {
-    background-color: transparent;
-}
-
-
-.logo-container img,
-.custom-logo-link img {
-	max-width: 100%;
-	height: auto;
-}
-.custom-logo {
-	width: auto;
-	height: 120px;
-	transition: all 0.3s ease;
-}
-.main-navigation {
-	display: flex;
-	align-items: center;
-}
-.main-menu {
-	display: flex;
-	gap: 1.5rem;
-}
-.main-menu a {
-	font-size: 1.3rem;
-	font-weight: 600;
-	padding: 0.5rem 1rem;
-	transition: all 0.3s ease;
-	text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-@keyframes fadeInDown {
-
-}
-
-@keyframes fadeInUp {
-	from { opacity: 0; transform: translateY(40px);}
-	to { opacity: 1; transform: translateY(0);}
-}
-.fade-in {
-	opacity: 0;
-	animation: fadeInUp 1s cubic-bezier(.42,0,.58,1) forwards;
+/* Estilo para los subtítulos (el primer párrafo de cada sección) */
+.content-section > p:first-of-type {
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.5rem;
+    font-size: 1.15rem;
+    color: #457b9d;
 }
 
 /* ----------------------------------------------------\
@@ -732,6 +732,15 @@ body.home-page {
 	.content-section {
 		padding: 50px 15px;
 	}
+	.collections-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .collection-card {
+        max-width: 90%; /* Ocupa más ancho en móviles */
+        margin-bottom: 2rem;
+    }
 }@media (max-width: 480px) {
 	.time-unit span:first-child {
 		font-size: 2rem;
@@ -1014,3 +1023,297 @@ body.home-page {
         height: 22px;
     }
 }
+
+/* ==========================================================================
+   Galerías de Páginas Secundarias (Tendencias, Inspiración, Colecciones)
+   ========================================================================== */
+
+/* Contenedores de las galerías para un layout consistente */
+.gallery,
+.inspiration-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.collections-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.collection-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 300px; /* Permite que las tarjetas crezcan y se encojan con un tamaño base */
+    max-width: 350px; /* Ancho máximo para mantener la estética */
+}
+
+.collection-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+}
+
+/* Estilo unificado para todas las imágenes de las galerías */
+.gallery-item img,
+.inspiration-gallery img,
+.collection-card img {
+    width: 100%;
+    height: 250px; /* Altura fija para uniformidad */
+    object-fit: cover; /* Evita que la imagen se deforme */
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transición suave */
+    display: block;
+}
+
+/* Efecto de zoom al pasar el ratón */
+.gallery-item:hover img,
+.inspiration-gallery img:hover,
+.collection-card:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para el texto dentro de las tarjetas */
+.gallery-item h3, .collection-info h3 {
+    color: #E63946;
+    margin-top: 1rem;
+}
+
+.gallery-item p, .collection-info p {
+    padding: 0 1rem 1rem;
+    flex-grow: 1;
+}
+
+.collection-info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.btn-coleccion {
+    display: inline-block;
+    background-color: #E63946;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 0 1rem 1rem;
+    transition: background-color 0.3s;
+}
+
+.btn-coleccion:hover {
+    background-color: #d62828;
+}
+
+.site-footer {
+    background-color: #1d3557;
+    color: #f1faee;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* ==========================================================================
+   Calculadora Mágica
+   ========================================================================== */
+
+.magic-calculator-container {
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 10px 10px 30px #d9d9d9, -10px -10px 30px #ffffff;
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.magic-calculator-container .input-group,
+.magic-calculator-container fieldset {
+    margin-bottom: 2rem;
+    border: none;
+    padding: 0;
+}
+
+.magic-calculator-container label,
+.magic-calculator-container legend {
+    display: block;
+    font-family: 'Mountains of Christmas', cursive;
+    font-size: 1.5rem;
+    color: #1d3557;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Estilo para el slider de altura - ¡El barrilete! */
+.tree-height-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 10px;
+    /* Usamos un gradiente dinámico para el efecto de llenado */
+    background: linear-gradient(to right, #e63946 0%, #e63946 var(--slider-fill-percentage, 50%), #a8dadc var(--slider-fill-percentage, 50%), #a8dadc 100%);
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+}
+
+.tree-height-slider:hover {
+    opacity: 1;
+}
+
+/* El "pulgar" del slider */
+.tree-height-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #e63946;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid #f1faee;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.tree-height-slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #e63946;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid #f1faee;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.height-display-container {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e63946;
+}
+
+/* Opciones de tipo de árbol */
+.tree-options-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.tree-options-container .tree-option {
+    cursor: pointer;
+}
+
+.tree-options-container .tree-option input[type="radio"] {
+    display: none; /* Ocultamos el radio button real */
+}
+
+.tree-options-container .tree-option-label {
+    display: block;
+    padding: 10px 20px;
+    background: #a8dadc;
+    color: #1d3557;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.tree-options-container .tree-option input[type="radio"]:checked + .tree-option-label {
+    background: #457b9d;
+    color: #f1faee;
+    border-color: #e63946;
+    transform: scale(1.1);
+}
+
+/* Botón de Calcular */
+.calculate-button {
+    display: block;
+    margin: 2rem auto 1.5rem;
+    padding: 12px 30px;
+    font-family: 'Mountains of Christmas', cursive;
+    font-size: 1.6rem;
+    color: #e63946; /* Letras rojas */
+    background-color: #2a9d8f; /* Fondo verde */
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(42, 157, 143, 0.4);
+    width: auto; /* Ancho automático */
+}
+
+.calculate-button:hover {
+    background-color: #264653;
+    color: #f1faee;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(38, 70, 83, 0.5);
+}
+
+.calculate-button .fa-magic {
+    margin-right: 10px;
+    animation: sparkle 1.5s infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.7; }
+}
+
+/* Contenedor de resultados */
+.results-container {
+    background: #f1faee;
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-top: 2rem;
+    text-align: center;
+    border: 2px dashed #a8dadc;
+}
+
+.results-container h3 {
+    margin-top: 0;
+    color: #1d3557;
+}
+
+.results-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.result-item {
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-label {
+    font-weight: bold;
+    color: #457b9d;
+    font-size: 0.9rem;
+}
+
+.result-label .fas {
+    margin-right: 5px;
+    color: #e63946;
+}
+
+.result-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1d3557;
+}
+
+/* ... (puedes añadir más estilos si es necesario) ... */

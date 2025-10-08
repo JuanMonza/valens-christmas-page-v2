@@ -22,58 +22,55 @@
         <h2>Calculadora Mágica de Decoración</h2>
         <p style="max-width: 600px; margin: 0 auto 2rem; color: var(--color-dark);">Descubre la cantidad perfecta de
             adornos para crear tu árbol navideño soñado</p>
-        <div class="calculator-box mejorada">
+        <div class="magic-calculator-container">
             <div class="input-group">
                 <label for="tree_height">Altura del árbol (en metros)</label>
-                <input type="range" id="tree_height" name="tree_height" min="1" max="3" step="0.1" value="1.5">
+                <input type="range" id="tree_height" class="tree-height-slider" name="tree_height" min="1" max="3" step="0.1" value="1.5">
                 <div class="height-display-container">
-                    <span>1m</span>
-                    <span id="height_display">1.5</span>
-                    <span>3m</span>
+                    <span id="height_display">1.5m</span>
                 </div>
             </div>
 
             <fieldset>
                 <legend>Tipo de árbol</legend>
                 <div class="tree-options-container">
-                    <label class="tree-option selected">
+                    <label class="tree-option">
                         <input type="radio" name="tree_type" value="slim" checked>
-                        Árbol delgado
+                        <span class="tree-option-label">Delgado</span>
                     </label>
                     <label class="tree-option">
                         <input type="radio" name="tree_type" value="standard">
-                        Árbol estándar
+                        <span class="tree-option-label">Estándar</span>
                     </label>
                     <label class="tree-option">
                         <input type="radio" name="tree_type" value="dense">
-                        Árbol frondoso
+                        <span class="tree-option-label">Frondoso</span>
                     </label>
                 </div>
             </fieldset>
 
-            <button id="calculate_btn">
-                Calcular adornos
+            <button id="calculate_btn" class="calculate-button">
+                <i class="fas fa-magic"></i> Calcular
             </button>
 
-            <div id="results">
-                <h3>Resultados aproximados:</h3>
+            <div id="results" class="results-container">
+                <h3>Tu árbol necesita:</h3>
                 <div class="results-content">
                     <div class="result-item">
-                        <strong>Esferas:</strong>
-                        <span id="res_ornaments">0</span>
+                        <span class="result-label"><i class="fas fa-star"></i> Esferas:</span>
+                        <span id="res_ornaments" class="result-value">0</span>
                     </div>
                     <div class="result-item">
-                        <strong>Moños:</strong>
-                        <span id="res_bows">0</span>
+                        <span class="result-label"><i class="fas fa-ribbon"></i> Moños:</span>
+                        <span id="res_bows" class="result-value">0</span>
                     </div>
                     <div class="result-item">
-                        <strong>Guirnalda (metros):</strong>
-                        <span id="res_garland">0</span>
+                        <span class="result-label"><i class="fas fa-stream"></i> Guirnalda:</span>
+                        <span id="res_garland" class="result-value">0m</span>
                     </div>
                     <div class="result-item">
-                        <strong>Luces LED:</strong>
-                        <span id="res_lights">0</span>
-                        <span id="res_lights_bulbs"></span>
+                        <span class="result-label"><i class="fas fa-lightbulb"></i> Luces LED:</span>
+                        <span id="res_lights" class="result-value">0</span>
                     </div>
                 </div>
             </div>
