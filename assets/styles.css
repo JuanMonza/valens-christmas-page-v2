@@ -4,6 +4,10 @@
 /* ==========================================================================
    Estilos Base
    ========================================================================== */
+html {
+    height: 100%; /* Asegura que el HTML ocupe toda la altura */
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
@@ -11,6 +15,9 @@ body {
     color: #1d3557;
     margin: 0;
     padding-top: 180px; /* Espacio para el header fijo inicial */
+    display: flex; /* Habilita flexbox */
+    flex-direction: column; /* Apila los elementos verticalmente */
+    min-height: 100vh; /* Altura mínima del 100% de la pantalla */
 }
 
 h1, h2, h3 {
@@ -19,6 +26,11 @@ h1, h2, h3 {
     color: #d62828; /* Un rojo navideño más intenso */
     text-align: center;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Hacemos que el contenido principal sea flexible para empujar el footer */
+.site-content, main {
+    flex: 1 0 auto; /* Crece para ocupar el espacio, no se encoge, tamaño base automático */
 }
 
 h2 {
@@ -291,14 +303,6 @@ body.home {
     background: rgba(255,255,255,0.28);
 }
 
-.mute-separate {
-    position: absolute;
-    right: 24px;
-    top: 50%;
-    transform: translateY(-50%);
-    margin: 0;
-}
-
 @media (max-width: 600px) {
     .countdown-container {
         flex-direction: column;
@@ -309,12 +313,6 @@ body.home {
         width: 44px;
         height: 44px;
         margin: 0 4px;
-    }
-    .mute-separate {
-        right: 12px;
-        top: auto;
-        bottom: 12px;
-        transform: none;
     }
 }
 
@@ -524,24 +522,21 @@ body.home-page {
    5. CONTADOR REGRESIVO
    ---------------------------------------------------- */
 .countdown-container {
-	background: linear-gradient(45deg, var(--color-green), var(--color-primary));
-	color: var(--color-light);
-	padding: 40px 20px;
-	text-align: center;
-	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+	/* Estilos para el efecto cristal rojo */
+	background: rgba(230, 57, 70, 0.85);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	padding: 30px;
+	border-radius: 15px;
+	margin-top: 20px;
+	box-shadow: 0 8px 32px rgba(230, 57, 70, 0.4);
 	position: relative;
-	overflow: hidden;
-}
-
-.countdown-container::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="%23ffffff20"><circle cx="25" cy="25" r="1"/></svg>') repeat;
-	opacity: 0.1;
+	/* Flexbox para alinear contador y botones */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px; /* Espacio entre contador y botones */
+	text-align: center;
 }
 
 .countdown-container h2 {
@@ -552,28 +547,58 @@ body.home-page {
 	text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
+/* Mensaje cuando el contador llega a cero */
+.countdown-finished-message {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 12px;
+    text-shadow: 0 2px 6px rgba(0,0,0,.4);
+}
+
 /* Ajustes responsive adicionales del bloque contador / controles de audio */
 @media (max-width: 720px){
-	#countdown-timer{flex-wrap:wrap;gap:18px;margin-right:0;}
+	#countdown-timer{
+        flex-wrap: nowrap; /* Evita que el contador se divida en varias líneas */
+        gap: 10px; /* Reduce el espacio entre unidades de tiempo */
+        margin-right:0;
+    }
 	.time-unit{padding:12px 18px;}
 	.time-unit span:first-child{font-size:2.6rem;}
 }
+
 @media (max-width: 560px){
-	.countdown-container{padding:28px 18px !important;}
-	#countdown-timer{justify-content:center;}
-	#play-music,#mute-music{width:100%;margin-left:0 !important;margin-top:6px;}
-	#play-music .status-label{min-width:auto;}
+    .countdown-container {
+        flex-direction: column; /* Apila el contador y los botones */
+        gap: 20px;
+    }
+    #countdown-timer {
+        width: 100%; /* Ocupa todo el ancho disponible */
+        gap: 2%; /* Espacio flexible entre cajas */
+    }
+    .time-unit {
+        flex: 1; /* Cada caja ocupa el mismo espacio flexible */
+        padding: 8px 2px; /* Padding vertical, mínimo horizontal */
+        min-width: 0; /* IMPORTANTE: Reseteamos el ancho mínimo */
+    }
+    .time-unit span:first-child { font-size: 1.6rem; } /* Números más pequeños */
+    .time-unit span:last-child { font-size: 0.5rem; } /* Texto más pequeño */
+
+    .countdown-controls {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
 }
 @media (max-width:400px){
-	.time-unit{min-width:70px;}
-	.time-unit span:first-child{font-size:2.2rem;}
+	/* Ya no necesitamos esta regla específica */
 }
 
 #countdown-timer {
 	display: flex;
 	justify-content: center;
-	gap: 30px;
-	margin-right: 40px;
+	gap: 15px;
+	color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .time-unit {
@@ -590,7 +615,7 @@ body.home-page {
 
 .time-unit span:first-child {
 	font-size: 3.5rem;
-	color: var(--color-secondary);
+	color: #fff;
 	line-height: 1;
 	margin-bottom: 5px;
 	/* Animación de pulsación festiva */
@@ -608,6 +633,7 @@ body.home-page {
 
 .time-unit span:last-child {
 	font-size: 0.9rem;
+	color: #fff;
 	text-transform: uppercase;
 }
 
@@ -955,7 +981,10 @@ body.home-page {
 .main-menu.mobile.open{transform:translateY(0);opacity:1;pointer-events:auto;} .main-menu.mobile a{font-size:1.5rem;color:var(--color-primary);text-shadow:none;}
 @media (min-width:901px){.menu-toggle{display:none;} .custom-logo{height:220px !important;} }
 @media (max-width:900px){.menu-toggle{display:block !important;z-index:1500;} .main-menu:not(.mobile){display:none;} .site-header{padding:6px 0 !important;background:rgba(255,255,255,0.55)!important;} .custom-logo{height:230px !important;} .hero-section{padding-top:250px;} }
-@media (max-width:600px){.custom-logo{height:190px !important;} .hero-section{padding-top:225px;} }
+@media (max-width:600px){
+    .custom-logo-link .custom-logo {height: 100px !important;} /* Reducimos el logo en móviles */
+    .hero-section{padding-top:225px;} 
+}
 /* ====== CTA WHATSAPP ====== */
 /* Estilos de botón WhatsApp eliminados */
 /* Botón música */
@@ -1407,6 +1436,114 @@ body.home-page {
     font-size: 1.5rem;
     font-weight: bold;
     color: #1d3557;
+}
+
+/* ==========================================================================
+   Estilos movidos desde HTML/JS para centralización
+   ========================================================================== */
+
+/* --- Estilos del Canvas de Nieve --- */
+#snow-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 99999;
+    opacity: 0.7;
+}
+
+/* --- Estilos de los iconos de música --- */
+/* El estado se controla desde JS, aquí solo definimos el estado inicial */
+#icon-pause,
+#icon-unmute {
+    display: none;
+}
+
+/* --- Estilos de contenido del Index --- */
+.section-subtitle {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    text-align: center;
+}
+
+.section-description {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.full-section-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.centered-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* --- Estilos del Footer --- */
+.site-footer {
+    background: #2D6A4F;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    text-align: left;
+}
+
+.footer-column p { color: #f1faee; }
+.footer-title { color: var(--color-gold, #FFD700); margin-bottom: 15px; }
+.footer-column.footer-social { text-align: center; }
+.contact-list { list-style: none; padding: 0; color: #f1faee; }
+.contact-list li { margin-bottom: 10px; }
+.contact-list a { color: #fff; text-decoration: underline; }
+.footer-icons { display: flex; justify-content: center; gap: 20px; }
+.footer-icons a { display: inline-block; }
+.social-icon-img { width: 36px; height: 36px; filter: invert(1) drop-shadow(0 1px 4px var(--shadow-color)); }
+.site-info { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.2); }
+.site-info p { font-size: 0.9rem; color: #f1faee; }
+.site-info a { color: #fff; text-decoration: underline; }
+
+/* --- Estilos de la sección "Encuéntranos y Comercializa" --- */
+#encuentranos-comercializa {
+    background: linear-gradient(90deg, #E63946 60%, #e80404 100%);
+    color: #fff;
+    padding: 48px 20px;
+    text-align: center;
+}
+
+#encuentranos-comercializa h2 {
+    color: #fff; /* Asegura que el título sea blanco */
+}
+
+#encuentranos-comercializa p {
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto 24px auto;
+    color: #f1faee; /* Color claro para el párrafo */
+}
+
+/* --- Estilos para los iconos de redes sociales en el cuerpo de la página --- */
+.social-section .social-icons img {
+    width: 36px;
+    height: 36px;
+    filter: invert(1) drop-shadow(0 1px 4px var(--shadow-color));
 }
 
 /* ... (puedes añadir más estilos si es necesario) ... */

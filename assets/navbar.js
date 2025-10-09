@@ -42,9 +42,22 @@ export function navbarScript() {
     const mainMenu = document.getElementById('primary-menu');
 
     if (menuToggle && mainMenu) {
-      menuToggle.addEventListener('click', function() {
-        document.body.classList.toggle('menu-open');
-      });
+      // Función para gestionar el menú móvil
+      const handleMobileMenu = () => {
+        // Nos aseguramos de que el menú tenga la clase 'mobile' para las animaciones
+        mainMenu.classList.add('mobile');
+
+        // Alternamos la clase 'active' en el botón para la animación (X)
+        menuToggle.classList.toggle('active');
+        // Alternamos la clase 'open' en el menú para mostrarlo/ocultarlo
+        mainMenu.classList.toggle('open');
+        
+        // Evitamos que se pueda hacer scroll en el body cuando el menú está abierto
+        document.body.style.overflow = mainMenu.classList.contains('open') ? 'hidden' : '';
+      };
+
+      // Asignamos el evento al botón
+      menuToggle.addEventListener('click', handleMobileMenu);
     }
 
     // Lógica para la cabecera de la página de inicio (solo scroll, sin ocultar)
@@ -92,4 +105,3 @@ export function stickyNavScript() {
         lastScrollTop = st;
     });
 }
-

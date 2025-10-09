@@ -1,62 +1,48 @@
 export function renderFooter() {
   return `
-  <footer id="colophon" class="site-footer"
-        style="background: #2D6A4F; color: #fff; padding: 60px 20px; text-align: center; position: relative;">
-        <div
-            style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; text-align: left;">
+  <footer id="colophon" class="site-footer">
+        <div class="footer-content">
 
             <!-- Columna 1: Sobre Nosotros -->
-            <div>
-                <h3 style="color: var(--color-gold); margin-bottom: 15px;">Valent's Christmas</h3>
-                <p style="color: #f1faee;">Llevando la magia de la Navidad a tu hogar con decoraciones únicas y de alta
+            <div class="footer-column">
+                <h3 class="footer-title">Valent's Christmas</h3>
+                <p>Llevando la magia de la Navidad a tu hogar con decoraciones únicas y de alta
                     calidad. Tu tienda de confianza para crear recuerdos inolvidables.</p>
             </div>
 
             <!-- Columna 2: Contacto -->
-            <div>
-                <h3 style="color: var(--color-gold); margin-bottom: 15px;">Información de Contacto</h3>
-                <ul style="list-style: none; padding: 0; color: #f1faee;">
-                    <li style="margin-bottom: 10px;"><strong>Dirección:</strong> Av. Principal, Ciudad Navidad, 12345
-                    </li>
-                    <li style="margin-bottom: 10px;"><strong>Teléfono:</strong> <a href="https://wa.me/573052290583" target="_blank" style="color:#fff;text-decoration:underline;">+57 305 2290583 (WhatsApp)</a></li>
-                    <li style="margin-bottom: 10px;"><strong>Email:</strong> <a
-                            href="mailto:casacontable@gmail.com"
-                            style="color: #fff;">casacontable@gmail.com</a></li>
+            <div class="footer-column">
+                <h3 class="footer-title">Información de Contacto</h3>
+                <ul class="contact-list">
+                    <li><strong>Dirección:</strong> Av. Principal, Ciudad Navidad, 12345</li>
+                    <li><strong>Teléfono:</strong> <a href="https://wa.me/573052290583" target="_blank">+57 305 2290583 (WhatsApp)</a></li>
+                    <li><strong>Email:</strong> <a href="mailto:casacontable@gmail.com">casacontable@gmail.com</a></li>
                 </ul>
             </div>
 
             <!-- Columna 3: Redes Sociales -->
-            <div style="text-align: center;">
-                <h3 style="color: var(--color-gold); margin-bottom: 15px;">Síguenos</h3>
-                <div class="footer-icons" style="display: flex; justify-content: center; gap: 20px;">
-                    <a href="https://facebook.com/" target="_blank" title="Facebook" style="display:inline-block;">
-                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg"
-                            alt="Facebook"
-                            style="width:36px;height:36px;filter: invert(1) drop-shadow(0 1px 4px #0033ff);">
+            <div class="footer-column footer-social">
+                <h3 class="footer-title">Síguenos</h3>
+                <div class="footer-icons">
+                    <a href="https://facebook.com/" target="_blank" title="Facebook">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" class="social-icon-img" style="--shadow-color: #0033ff;">
                     </a>
-                    <a href="https://instagram.com/valent.s_christmas/" target="_blank" title="Instagram" style="display:inline-block;">
-                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
-                            alt="Instagram"
-                            style="width:36px;height:36px;filter: invert(1) drop-shadow(0 1px 4px #f315dd);">
+                    <a href="https://instagram.com/valent.s_christmas/" target="_blank" title="Instagram">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" class="social-icon-img" style="--shadow-color: #f315dd;">
                     </a>
-                    <a href="https://wa.me/34644717399" target="_blank" title="WhatsApp" style="display:inline-block;">
-                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp"
-                            style="width:36px;height:36px;filter: invert(1) drop-shadow(0 1px 4px #047200);">
+                    <a href="https://wa.me/34644717399" target="_blank" title="WhatsApp">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp" class="social-icon-img" style="--shadow-color: #047200;">
                     </a>
-                    <a href="https://youtube.com/" target="_blank" title="YouTube" style="display:inline-block;">
-                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube"
-                            style="width:36px;height:36px;filter: invert(1) drop-shadow(0 1px 4px #ff0000);">
+                    <a href="https://youtube.com/" target="_blank" title="YouTube">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" class="social-icon-img" style="--shadow-color: #ff0000;">
                     </a>
                 </div>
             </div>
-
         </div>
-        <div class="site-info"
-            style="margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2);">
-            <p style="font-size: 0.9rem;">
+        <div class="site-info">
+            <p>
                 &copy; 2025 <strong>Valens Christmas</strong> | Todos los derechos reservados.<br>
-                Desarrollado por <a href="https://github.com/JuanMonza" target="_blank" rel="noopener"
-                    style="color: #fff; text-decoration: underline;">Juan Monsalve</a>
+                Desarrollado por <a href="https://github.com/JuanMonza" target="_blank" rel="noopener">Juan Monsalve</a>
             </p>
         </div>
     </footer>

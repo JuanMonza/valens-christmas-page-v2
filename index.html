@@ -18,8 +18,7 @@
 
 <body class="home">
 
-    <canvas id="snow-canvas"
-        style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:99999;opacity:0.7;"></canvas>
+    <canvas id="snow-canvas"></canvas>
     <script src="assets/scripts.js"></script>
 
     <div id="navbar"></div>
@@ -30,8 +29,7 @@
 
             <section id="inicio" class="hero-section fade-in">
 
-                <div class="hero-media-container"
-                    style="position:relative;width:100%;height:100vh;display:flex;align-items:center;justify-content:center;">
+                <div class="hero-media-container">
                     <video class="hero-video" autoplay loop muted playsinline>
                         <source src="medios/3565-172488151_22medium.mp4" type="video/mp4">
                         Tu navegador no soporta el video.
@@ -46,46 +44,47 @@
             </section>
 
 
-            <section class="countdown-container fade-in"
-                style="display: flex; align-items: center; justify-content: center; gap: 40px; background: rgba(230, 57, 70, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 30px; border-radius: 15px; margin-top: 20px; box-shadow: 0 8px 32px rgba(230, 57, 70, 0.4); position: relative;">
-                <div id="countdown-timer" style="color: #ffffff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+            <section class="countdown-container fade-in">
+                <div id="countdown-timer">
                     <div class="time-unit"><span id="days">00</span><span>Días</span></div>
                     <div class="time-unit"><span id="hours">00</span><span>Horas</span></div>
                     <div class="time-unit"><span id="minutes">00</span><span>Minutos</span></div>
                     <div class="time-unit"><span id="seconds">00</span><span>Segundos</span></div>
                 </div>
-                <button id="play-music" class="music-glass-btn" aria-pressed="false"
-                    aria-label="Reproducir música navideña">
-                    <svg id="icon-play" viewBox="0 0 32 32" style="display:block">
-                        <circle cx="16" cy="16" r="16" fill="#E63946" />
-                        <polygon points="12,10 24,16 12,22" fill="#fff" />
-                    </svg>
-                    <svg id="icon-pause" viewBox="0 0 32 32" style="display:none">
-                        <circle cx="16" cy="16" r="16" fill="#E63946" />
-                        <rect x="12" y="10" width="3" height="12" fill="#fff" />
-                        <rect x="17" y="10" width="3" height="12" fill="#fff" />
-                    </svg>
-                </button>
-                <button id="mute-music" class="music-glass-btn mute-separate" aria-pressed="false" aria-label="Silenciar música navideña">
-                    <svg id="icon-mute" viewBox="0 0 32 32">
-                        <circle cx="16" cy="16" r="16" fill="#E63946" />
-                        <polygon points="10,12 16,12 20,8 20,24 16,20 10,20" fill="#fff" />
-                        <line x1="10" y1="10" x2="22" y2="22" stroke="#fff" stroke-width="2" />
-                    </svg>
-                    <svg id="icon-unmute" viewBox="0 0 32 32" style="display:none">
-                        <circle cx="16" cy="16" r="16" fill="#E63946" />
-                        <polygon points="10,12 16,12 20,8 20,24 16,20 10,20" fill="#fff" />
-                    </svg>
-                </button>
+                <div class="countdown-controls">
+                    <button id="play-music" class="music-glass-btn" aria-pressed="false"
+                        aria-label="Reproducir música navideña">
+                        <svg id="icon-play" viewBox="0 0 32 32">
+                            <circle cx="16" cy="16" r="16" fill="#E63946" />
+                            <polygon points="12,10 24,16 12,22" fill="#fff" />
+                        </svg>
+                        <svg id="icon-pause" viewBox="0 0 32 32">
+                            <circle cx="16" cy="16" r="16" fill="#E63946" />
+                            <rect x="12" y="10" width="3" height="12" fill="#fff" />
+                            <rect x="17" y="10" width="3" height="12" fill="#fff" />
+                        </svg>
+                    </button>
+                    <button id="mute-music" class="music-glass-btn" aria-pressed="false" aria-label="Silenciar música navideña">
+                        <svg id="icon-mute" viewBox="0 0 32 32" >
+                            <circle cx="16" cy="16" r="16" fill="#E63946" />
+                            <polygon points="10,12 16,12 20,8 20,24 16,20 10,20" fill="#fff" />
+                            <line x1="10" y1="10" x2="22" y2="22" stroke="#fff" stroke-width="2" />
+                        </svg>
+                        <svg id="icon-unmute" viewBox="0 0 32 32" style="display:none">
+                            <circle cx="16" cy="16" r="16" fill="#E63946" />
+                            <polygon points="10,12 16,12 20,8 20,24 16,20 10,20" fill="#fff" />
+                        </svg>
+                    </button>
+                </div>
             </section>
 
             <div class="main-content-area">
                 <section id="categorias" class="content-section fade-in animated-section">
                     <h2>Explora nuestras categorías</h2>
-                    <p style="max-width:700px;margin:0 auto 2rem;text-align:center;">Descubre las colecciones y
+                    <p class="section-subtitle">Descubre las colecciones y
                         tendencias que tenemos para ti. Cada categoría está pensada para llenar tu hogar de magia
                         navideña.</p>
-                    <a href="colecciones.html" style="text-decoration: none; color: inherit; display: block;">
+                    <a href="colecciones.html" class="full-section-link">
                         <div class="section-images">
                             <img src="medios/WhatsApp Image 2025-10-07 at 15.56.33.jpeg" alt="Categoría 1"
                                 class="section-img">
@@ -95,10 +94,10 @@
                     </a>
                 </section>
 
-                <a href="tendencias.html" style="text-decoration: none; color: inherit; display: block;">
+                <a href="tendencias.html" class="full-section-link">
                     <section id="magia" class="content-section fade-in">
                         <h2>Toda la Magia y el amor de la navidad</h2>
-                        <p style="max-width: 800px; margin: 0 auto; line-height: 1.8;">
+                        <p class="section-description">
                             Con emoción te presentamos las nuevas colecciones navideñas 2025. En cada pieza encontrarás un
                             destello de felicidad diseñado para llenar tu hogar con la chispa de las fiestas. Con
                             <strong>Valens Christmas</strong>, no solo llevas decoración, llevas un pedacito de alegría y
@@ -116,7 +115,7 @@
                 <section id="productos-destacados" class="content-section fade-in">
                     <h2>Productos Destacados</h2>
                     <p>Los favoritos de esta temporada para un hogar lleno de magia.</p>
-                    <a href="inspiracion.html" style="text-decoration: none; color: inherit; display: block;">
+                    <a href="inspiracion.html" class="full-section-link">
                         <div class="section-images">
                             <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57 (3).jpeg" alt="Producto 1"
                                 class="section-img">
@@ -130,10 +129,10 @@
 
 
                 <section id="sobre-nosotros" class="content-section fade-in">
-                    <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="centered-content">
                         <h2>Nuestra Historia</h2>
                         <img src="medios/logo valents.PNG" alt="Valens Christmas Logo" class="nuestra-historia-logo">
-                        <p style="line-height: 1.8; text-align: center;">
+                        <p class="section-description text-center">
                             En <strong>Valens Christmas</strong>, creemos que la Navidad es más que una temporada; es un
                             sentimiento que une a las familias y crea recuerdos para toda la vida. Desde nuestros
                             inicios, nos hemos dedicado a seleccionar y diseñar decoraciones que no solo embellecen los
@@ -162,45 +161,38 @@
     </section>
 
     <!-- ------------------- 12. SECCIÓN REDES SOCIALES (CÓDIGO SUGERIDO) ------------------- -->
-    <section class="social-section" style="text-align: center; padding: 40px 0;">
+    <section class="social-section">
         <h2>Síguenos en Redes Sociales</h2>
         <p>Comparte tus momentos navideños con nosotros usando el hashtag <strong>#Valent'sChristmas</strong></p>
-        <div class="social-icons" style="display: flex; justify-content: center; gap: 20px;">
-            <a href="https://facebook.com/" target="_blank" title="Facebook" style="display:inline-block;">
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook"
-                    style="width:36px;height:36px;filter: invert(1) drop-shadow(0 1px 4px #0033ff);">
+        <div class="social-icons">
+            <a href="https://facebook.com/" target="_blank" title="Facebook">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="--shadow-color: #0033ff;">
             </a>
-            <a href="https://instagram.com/valent.s_christmas/" target="_blank" title="Instagram" style="display:inline-block;">
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"
-                    style="width:36px;height:36px;filter: invert(1) drop-shadow(0 1px 4px #f315dd);">
+            <a href="https://instagram.com/valent.s_christmas/" target="_blank" title="Instagram">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style="--shadow-color: #f315dd;">
             </a>
-            <a href="https://wa.me/34644717399" target="_blank" title="WhatsApp" style="display:inline-block;">
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp"
-                            style="width:36px;height:36px;filter: invert(1) drop-shadow(0 1px 4px #047200);">
+            <a href="https://wa.me/34644717399" target="_blank" title="WhatsApp">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp" style="--shadow-color: #047200;">
             </a>
-            <a href="https://youtube.com/" target="_blank" title="YouTube" style="display:inline-block;">
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube"
-                    style="width:36px;height:36px;filter: invert(1) drop-shadow(0 1px 4px #ff0000);">
+            <a href="https://youtube.com/" target="_blank" title="YouTube">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" style="--shadow-color: #ff0000;">
             </a>
         </div>
     </section>
 
-    </div><!-- .main-content-area -->
-
+        <!-- SECCIÓN ENCUÉNTRANOS Y COMERCIALIZA (MOVIDA AQUÍ) -->
+        <section id="encuentranos-comercializa">
+            <h2>Encuéntranos y Comercializa</h2>
+            <p>¿Quieres vender nuestros productos o
+                encontrarnos en tu ciudad? ¡Contáctanos para alianzas comerciales, puntos de venta y oportunidades de
+                negocio navideño!</p>
+            <a href="mailto:contacto@valenschristmas.com" class="crystal-btn">
+                <span class="btn-text">Contáctanos</span>
+            </a>
+        </section>
+        </div><!-- .main-content-area -->
     </main><!-- #primary -->
-    </div><!-- #content -->
-
-    <!-- SECCIÓN ENCUÉNTRANOS Y COMERCIALIZA -->
-    <section id="encuentranos-comercializa"
-        style="background: linear-gradient(90deg, #E63946 60%, #e80404 100%); color: #fff; padding: 48px 20px; text-align: center;">
-        <h2 style="color:#fff;">Encuéntranos y Comercializa</h2>
-        <p style="font-size:1.15rem; max-width:600px; margin:0 auto 24px auto;">¿Quieres vender nuestros productos o
-            encontrarnos en tu ciudad? ¡Contáctanos para alianzas comerciales, puntos de venta y oportunidades de
-            negocio navideño!</p>
-        <a href="mailto:contacto@valenschristmas.com" class="crystal-btn" style="padding: 12px 24px; font-size: 1rem;">
-            <span class="btn-text">Contáctanos</span>
-        </a>
-    </section>
+</div><!-- #content -->
 
     <div id="footer"></div>
 
@@ -213,233 +205,7 @@
         navbarScript();
     </script>
     <!-- SCRIPTS CONSOLIDADOS -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-
-            // ================== CONTADOR REGRESIVO NAVIDEÑO ==================
-            (function initChristmasCountdown() {
-                const daysEl = document.getElementById('days');
-                const hoursEl = document.getElementById('hours');
-                const minutesEl = document.getElementById('minutes');
-                const secondsEl = document.getElementById('seconds');
-                const container = document.getElementById('countdown-timer');
-
-                if (!daysEl || !hoursEl || !minutesEl || !secondsEl || !container) {
-                    console.warn("Elementos del contador no encontrados. El contador no se iniciará.");
-                    return;
-                }
-
-                function getTargetDate() {
-                    const now = new Date();
-                    const currentYear = now.getFullYear();
-                    let target = new Date(currentYear, 11, 25, 0, 0, 0, 0); // 25 Dic
-                    if (now > target) {
-                        target = new Date(currentYear + 1, 11, 25, 0, 0, 0, 0);
-                    }
-                    return target;
-                }
-
-                let targetDate = getTargetDate();
-                let finished = false;
-
-                function pad(n) { return n.toString().padStart(2, '0'); }
-
-                function update() {
-                    if (finished) return;
-                    const now = new Date();
-                    let diff = targetDate - now;
-
-                    if (diff <= 0) {
-                        finished = true;
-                        daysEl.textContent = '00';
-                        hoursEl.textContent = '00';
-                        minutesEl.textContent = '00';
-                        secondsEl.textContent = '00';
-                        const msg = document.createElement('div');
-                        msg.textContent = '¡Feliz Navidad!';
-                        msg.setAttribute('role', 'status');
-                        msg.style.cssText = 'font-size:2rem;font-weight:700;margin-top:12px;text-shadow:0 2px 6px rgba(0,0,0,.4)';
-                        container.appendChild(msg);
-                        return;
-                    }
-                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    const hrs = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const min = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    const sec = Math.floor((diff % (1000 * 60)) / 1000);
-
-                    daysEl.textContent = pad(days);
-                    hoursEl.textContent = pad(hrs);
-                    minutesEl.textContent = pad(min);
-                    secondsEl.textContent = pad(sec);
-                }
-                update();
-                setInterval(update, 1000);
-            })();
-
-            // ================== CONTROL DE MÚSICA NAVIDEÑA ==================
-            (function initChristmasMusic() {
-                try {
-                    const audio = document.getElementById('christmas-audio');
-                    const btn = document.getElementById('play-music');
-                    const muteBtn = document.getElementById('mute-music');
-                    const iconPlay = document.getElementById('icon-play');
-                    const iconPause = document.getElementById('icon-pause');
-                    const iconMute = document.getElementById('icon-mute');
-                    const iconUnmute = document.getElementById('icon-unmute');
-
-                    if (!audio || !btn || !muteBtn || !iconPlay || !iconPause || !iconMute || !iconUnmute) {
-                         console.warn("Elementos del reproductor de música no encontrados.");
-                        return;
-                    }
-                    
-                    audio.loop = true;
-
-                    // Guardar estado de la música antes de navegar a otra página
-                    window.addEventListener('beforeunload', () => {
-                        const musicState = {
-                            time: audio.currentTime,
-                            paused: audio.paused,
-                            muted: audio.muted
-                        };
-                        sessionStorage.setItem('musicState', JSON.stringify(musicState));
-                    });
-
-                    function updatePlayIcon() {
-                        iconPlay.style.display = audio.paused ? 'block' : 'none';
-                        iconPause.style.display = audio.paused ? 'none' : 'block';
-                    }
-
-                    function updateMuteIcon() {
-                        iconMute.style.display = audio.muted ? 'block' : 'none';
-                        iconUnmute.style.display = audio.muted ? 'none' : 'block';
-                    }
-
-                    btn.addEventListener('click', function () {
-                        if (audio.paused) {
-                            audio.play().catch(e => console.error("Error al reproducir audio:", e));
-                        } else {
-                            audio.pause();
-                        }
-                    });
-
-                    muteBtn.addEventListener('click', function () {
-                        audio.muted = !audio.muted;
-                    });
-
-                    audio.addEventListener('play', updatePlayIcon);
-                    audio.addEventListener('pause', updatePlayIcon);
-                    audio.addEventListener('volumechange', updateMuteIcon);
-                    
-                    // Restaurar estado o iniciar en la primera interacción
-                    const savedState = JSON.parse(sessionStorage.getItem('musicState'));
-                    if (savedState) {
-                        audio.currentTime = savedState.time;
-                        audio.muted = savedState.muted;
-                        if (!savedState.paused) {
-                            audio.play().catch(e => console.warn("La reproducción automática fue bloqueada, se requiere interacción.", e));
-                        }
-                        updatePlayIcon();
-                        updateMuteIcon();
-                    }
-
-                    const startMusicOnInteraction = () => {
-                        // Si el audio está pausado por la política de autoplay, lo reactivamos
-                        if (audio.paused && (audio.hasAttribute('autoplay') || (savedState && !savedState.paused))) {
-                            audio.muted = false;
-                            audio.play().catch(()=>{});
-                        }
-                        document.body.removeEventListener('click', startMusicOnInteraction);
-                        document.body.removeEventListener('touchstart', startMusicOnInteraction);
-                    };
-
-                    document.body.addEventListener('click', startMusicOnInteraction);
-                    document.body.addEventListener('touchstart', startMusicOnInteraction);
-
-                    updatePlayIcon();
-                    updateMuteIcon();
-
-                } catch (e) {
-                    console.error('Error al inicializar el reproductor de música:', e);
-                }
-            })();
-
-            // ================== INICIALIZAR CARRUSELES (SWIPER) ==================
-            (function initSwipers() {
-                if (typeof Swiper === 'undefined') return;
-
-                function initSwiper(containerId, options) {
-                    const defaultOptions = {
-                        loop: true,
-                        slidesPerView: 2,
-                        speed: 800,
-                        autoplay: { delay: 2000, disableOnInteraction: false },
-                        pagination: { el: '.swiper-pagination', clickable: true },
-                        loopAdditionalSlides: 4,
-                        watchSlidesProgress: true,
-                        loopPreventsSliding: false
-                    };
-                    return new Swiper(containerId, { ...defaultOptions, ...options });
-                }
-
-                const commonConfig = {
-                    slidesPerView: 2,
-                    spaceBetween: 20,
-                    speed: 800,
-                    loop: true,
-                    loopAdditionalSlides: 4,
-                    watchSlidesProgress: true,
-                    autoplay: { delay: 2000, disableOnInteraction: false }
-                };
-
-                initSwiper('#productos-swiper', { ...commonConfig, breakpoints: { 320: { slidesPerView: 1 }, 768: { slidesPerView: 2 } } });
-                initSwiper('#categorias-swiper', { ...commonConfig, breakpoints: { 320: { slidesPerView: 1 }, 768: { slidesPerView: 2 } } });
-                initSwiper('#tendencias-swiper', { ...commonConfig, breakpoints: { 320: { slidesPerView: 1 }, 768: { slidesPerView: 2 } } });
-                initSwiper('#colecciones-swiper', { ...commonConfig, breakpoints: { 320: { slidesPerView: 1 }, 768: { slidesPerView: 2 } } });
-            })();
-
-            // ================== MENÚ HAMBURGUESA Y NAVBAR ==================
-            (function initNavbar() {
-                const menuToggle = document.getElementById('menu-toggle');
-                const mainMenu = document.getElementById('primary-menu');
-                const header = document.querySelector('.site-header');
-
-                if (menuToggle && mainMenu) {
-                    function openMenu() {
-                        mainMenu.classList.add('mobile', 'open');
-                        menuToggle.classList.add('active');
-                        menuToggle.setAttribute('aria-expanded', 'true');
-                        document.body.style.overflow = 'hidden';
-                    }
-                    function closeMenu() {
-                        mainMenu.classList.remove('open');
-                        menuToggle.classList.remove('active');
-                        menuToggle.setAttribute('aria-expanded', 'false');
-                        document.body.style.overflow = '';
-                    }
-                    function toggleMenu() { mainMenu.classList.contains('open') ? closeMenu() : openMenu(); }
-                    menuToggle.addEventListener('click', toggleMenu);
-                    mainMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { if (window.innerWidth <= 900) closeMenu(); }));
-                    window.addEventListener('resize', () => { if (window.innerWidth > 900) { closeMenu(); mainMenu.classList.remove('mobile'); } else { mainMenu.classList.add('mobile'); } });
-                }
-
-                if (header) {
-                    let lastScrollTop = 0;
-                    const delta = 5;
-                    window.addEventListener('scroll', function () {
-                        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                        if (Math.abs(lastScrollTop - scrollTop) <= delta) return;
-                        if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
-                            header.style.transform = 'translateY(-100%)';
-                        } else {
-                            header.style.transform = 'translateY(0)';
-                        }
-                        lastScrollTop = scrollTop;
-                    }, false);
-                }
-            })();
-
-        });
-    </script>
+    <script src="assets/main-page.js"></script>
     <script src="assets/music-persistence.js"></script>
     <script src="assets/snow-effect.js"></script>
 
