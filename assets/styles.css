@@ -11,10 +11,13 @@ html {
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    background-color: #f1faee;
+    /* Fondo dorado navideño con imagen */
+    background-image: url('../medios/239.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: #1d3557;
     margin: 0;
-    padding-top: 180px; /* Espacio para el header fijo inicial */
     display: flex; /* Habilita flexbox */
     flex-direction: column; /* Apila los elementos verticalmente */
     min-height: 100vh; /* Altura mínima del 100% de la pantalla */
@@ -29,8 +32,9 @@ h1, h2, h3 {
 }
 
 /* Hacemos que el contenido principal sea flexible para empujar el footer */
-.site-content, main {
-    flex: 1 0 auto; /* Crece para ocupar el espacio, no se encoge, tamaño base automático */
+.site-content {
+    /* El padding-top ahora se calcula con JavaScript */
+    flex: 1 0 auto; /* Crece para ocupar el espacio y empujar el footer */
 }
 
 h2 {
@@ -250,10 +254,6 @@ h2 {
 }
 
 /* Ajuste para que el contenido principal no sea tapado por el header */
-body.home {
-    padding-top: 0; /* Eliminamos el padding-top en la home */
-}
-
 .home .hero-section {
     min-height: 100vh;
 }
@@ -969,7 +969,7 @@ body.home-page {
 .bar {
   height: 5px;
   width: 100%;
-  background-color: #DC052D;
+  background-color: #ffffff; /* Verde Navidad */
   display: block;
   border-radius: 5px;
   transition: 0.3s ease;
@@ -1005,7 +1005,7 @@ body.home-page {
   width: 0;
   height: 0;
   margin: 0; /* Reseteamos el margen */
-  background: radial-gradient(circle, #DC052D, #c52b38);
+  background: radial-gradient(circle, #2D6A4F, #1B4332); /* Verde Navidad */
   border-radius: 50%;
   transition: 0.3s ease;
 }
@@ -1017,10 +1017,16 @@ body.home-page {
 .change #bar3 { transform: translateY(-6px) rotateZ(45deg); }
 .change-bg { width: 125vw; height: 150vw; transform: translate(50%, -25%); }
 
-@media (min-width:901px){ #menu{display:none;} .custom-logo{height:220px !important;} }
-@media (max-width:900px){ #menu{display:block;} .main-menu{display:none;} .site-header{padding:6px 0 !important;background:rgba(255,255,255,0.55)!important;} .custom-logo{height:230px !important;} .hero-section{padding-top:250px;} }
+@media (min-width:901px){ #menu{display:none;} .custom-logo{height:120px !important;} }
+@media (max-width:900px){ 
+    #menu{display:block;} 
+    .main-menu{display:none;} 
+    .site-header{padding:6px 0 !important;background:rgba(220, 5, 44, 0.817) !important;} 
+    .custom-logo{height:100px !important;} 
+    main, .site-content { padding-top: 60px; } /* Añade espacio para el header */
+}
 @media (max-width:600px){
-    .custom-logo-link .custom-logo {height: 100px !important;} /* Reducimos el logo en móviles */
+    .custom-logo-link .custom-logo {height: 70px !important;} /* Reducimos el logo en móviles */
     .hero-section{padding-top:225px;} 
 }
 
@@ -1581,6 +1587,28 @@ body.home-page {
     width: 36px;
     height: 36px;
     filter: invert(1) drop-shadow(0 1px 4px var(--shadow-color));
+}
+
+/* --- Estilos para el feed de Instagram --- */
+.instagram-feed-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas por defecto */
+    gap: 1rem;
+    max-width: 800px;
+    margin: 2rem auto 0;
+}
+
+.instagram-media {
+    width: 100% !important;
+    max-width: 320px !important; /* Ancho máximo por post */
+    margin: auto !important;
+    min-width: unset !important; /* Resetea el min-width de Instagram */
+}
+
+@media (max-width: 768px) {
+    .instagram-feed-grid {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+    }
 }
 
 /* ... (puedes añadir más estilos si es necesario) ... */

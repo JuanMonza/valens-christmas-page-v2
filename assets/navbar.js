@@ -9,6 +9,16 @@ export function renderNavbar() {
           </a>
         </div>
         <nav id="site-navigation" class="main-navigation" aria-label="Menú principal">
+          <!-- Menú para Escritorio -->
+          <ul class="main-menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="tendencias.html">Tendencias</a></li>
+            <li><a href="colecciones.html">Colecciones</a></li>
+            <li><a href="inspiracion.html">Inspiración</a></li>
+            <li><a href="calculadora.html">Calculadora</a></li>
+            <li><a href="encuentranos.html">Encuéntranos</a></li>
+          </ul>
+          <!-- Menú para Móvil -->
           <div id="menu">
             <div id="menu-bar" onclick="menuOnClick()">
               <div id="bar1" class="bar"></div>
