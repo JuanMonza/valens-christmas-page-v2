@@ -100,6 +100,23 @@ export function navbarScript() {
         }
       });
     });
+
+    // Lógica para la cabecera de la página de inicio
+    if (document.body.classList.contains('home')) {
+      const header = document.getElementById('masthead');
+      
+      // Asignar clase 'home' al header para estilos específicos
+      header.classList.add('home');
+
+      // Cambiar el fondo del header al hacer scroll
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 50) {
+          header.classList.add('header-scrolled');
+        } else {
+          header.classList.remove('header-scrolled');
+        }
+      }, false);
+    }
   });
 }
 
