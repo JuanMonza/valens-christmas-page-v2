@@ -183,7 +183,7 @@ h2 {
     }
 
     .main-menu {
-        display: none; /* Oculto por defecto */
+        /* display: none;  Este estilo se gestionará con la clase .mobile */
         flex-direction: column;
         position: absolute;
         top: 100%; /* Justo debajo del header */
@@ -907,7 +907,7 @@ body.home-page {
 	position: fixed;
 	inset: 0;
 	padding: 150px 40px 60px;
-	background: rgba(236, 57, 72, 0.95); /* Mismo color que el header de escritorio, pero más opaco */
+	background: rgba(236, 57, 72, 0.8); /* Color unificado con el header de escritorio */
 	box-shadow: 0 8px 32px rgba(230,57,70,0.18);
 	backdrop-filter: blur(10px);
 	-webkit-backdrop-filter: blur(10px);
@@ -920,7 +920,7 @@ body.home-page {
 }
 .main-menu.mobile.open{transform:translateY(0);opacity:1;pointer-events:auto;} .main-menu.mobile a{font-size:1.5rem;color:var(--color-primary);text-shadow:none;}
 @media (min-width:901px){.menu-toggle{display:none;} .custom-logo{height:220px !important;} }
-@media (max-width:900px){.menu-toggle{display:block !important;z-index:1500;} .main-menu{display:none;} .site-header{padding:6px 0 !important;background:rgba(255,255,255,0.55)!important;} .custom-logo{height:230px !important;} .hero-section{padding-top:250px;} }
+@media (max-width:900px){.menu-toggle{display:block !important;z-index:1500;} .main-menu:not(.mobile){display:none;} .site-header{padding:6px 0 !important;background:rgba(255,255,255,0.55)!important;} .custom-logo{height:230px !important;} .hero-section{padding-top:250px;} }
 @media (max-width:600px){.custom-logo{height:190px !important;} .hero-section{padding-top:225px;} }
 /* ====== CTA WHATSAPP ====== */
 /* Estilos de botón WhatsApp eliminados */
