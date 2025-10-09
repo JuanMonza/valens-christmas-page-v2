@@ -984,7 +984,14 @@ body.home-page {
 }
 .nav ul { padding: 0 22px; }
 .nav li { list-style: none; padding: 12px 0; }
-.nav li a { color: white; font-size: 20px; text-decoration: none; }
+.nav li a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Espacio entre el icono y el texto */
+}
 .nav li a:hover { font-weight: bold; }
 
 .menu-bg, #menu {
@@ -1016,8 +1023,7 @@ body.home-page {
     .custom-logo-link .custom-logo {height: 100px !important;} /* Reducimos el logo en móviles */
     .hero-section{padding-top:225px;} 
 }
-/* ====== CTA WHATSAPP ====== */
-/* Estilos de botón WhatsApp eliminados */
+
 /* Botón música */
 #play-music{position:relative;overflow:hidden;transition:background .4s,transform .3s;}
 #play-music.playing{background:linear-gradient(135deg,#06b347,#0e8f39);box-shadow:0 0 0 3px rgba(255,255,255,.25),0 8px 22px -6px rgba(0,0,0,.45);}

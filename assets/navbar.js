@@ -16,12 +16,12 @@ export function renderNavbar() {
               <div id="bar3" class="bar"></div>
             </div>
             <ul class="nav" id="nav">
-              <li><a href="index.html">Inicio</a></li>
-              <li><a href="tendencias.html">Tendencias</a></li>
-              <li><a href="colecciones.html">Colecciones</a></li>
-              <li><a href="inspiracion.html">Inspiración</a></li>
-              <li><a href="calculadora.html">Calculadora</a></li>
-              <li><a href="encuentranos.html">Encuéntranos</a></li>
+              <li><a href="index.html"><i class="fas fa-sleigh"></i> Inicio</a></li>
+              <li><a href="tendencias.html"><i class="fas fa-star"></i> Tendencias</a></li>
+              <li><a href="colecciones.html"><i class="fas fa-gifts"></i> Colecciones</a></li>
+              <li><a href="inspiracion.html"><i class="fas fa-lightbulb"></i> Inspiración</a></li>
+              <li><a href="calculadora.html"><i class="fas fa-tree"></i> Calculadora</a></li>
+              <li><a href="encuentranos.html"><i class="fas fa-map-marker-alt"></i> Encuéntranos</a></li>
             </ul>
           </div>
           <div class="menu-bg" id="menu-bg"></div>
