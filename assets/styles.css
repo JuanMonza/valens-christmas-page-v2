@@ -953,34 +953,65 @@ body.home-page {
   outline: none;
 }
 
-/* ====== MENÚ HAMBURGUESA + OVERLAY ====== */
-.menu-toggle{position:relative;background:rgba(255,255,255,.8);border:2px solid var(--color-primary);padding:10px 14px;border-radius:14px;cursor:pointer;display:none;margin-left:auto;backdrop-filter:blur(4px);transition:all .3s;}
-.menu-toggle:hover{background:var(--color-primary);} .menu-toggle:hover .hamburger,.menu-toggle:hover .hamburger:before,.menu-toggle:hover .hamburger:after{background:#fff;}
-.hamburger{display:block;width:28px;height:3px;background:var(--color-primary);position:relative;border-radius:2px;transition:all .4s;}
-.hamburger:before,.hamburger:after{content:"";position:absolute;left:0;width:28px;height:3px;background:var(--color-primary);border-radius:2px;transition:all .4s;}
-.hamburger:before{top:-8px;} .hamburger:after{top:8px;}
-.menu-toggle.active .hamburger{background:transparent;} .menu-toggle.active .hamburger:before{top:0;transform:rotate(45deg);} .menu-toggle.active .hamburger:after{top:0;transform:rotate(-45deg);} 
-.main-menu.mobile {
-	display: flex;
-	flex-direction: column;
-	gap: 32px;
-	position: fixed;
-	inset: 0;
-	padding: 150px 40px 60px;
-	background: rgba(236, 57, 72, 0.8); /* Color unificado con el header de escritorio */
-	box-shadow: 0 8px 32px rgba(230,57,70,0.18);
-	backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px);
-	transform: translateY(-100%);
-	opacity: 0;
-	pointer-events: none;
-	z-index: 1400;
-	overflow-y: auto;
-	transition: all .45s cubic-bezier(.6,.2,.15,1);
+/* ====== NUEVO MENÚ HAMBURGUESA CIRCULAR ====== */
+#menu {
+  z-index: 1500; /* Asegura que el menú esté por encima de otros elementos */
+  display: none; /* Oculto por defecto, se muestra en media query */
 }
-.main-menu.mobile.open{transform:translateY(0);opacity:1;pointer-events:auto;} .main-menu.mobile a{font-size:1.5rem;color:var(--color-primary);text-shadow:none;}
-@media (min-width:901px){.menu-toggle{display:none;} .custom-logo{height:220px !important;} }
-@media (max-width:900px){.menu-toggle{display:block !important;z-index:1500;} .main-menu:not(.mobile){display:none;} .site-header{padding:6px 0 !important;background:rgba(255,255,255,0.55)!important;} .custom-logo{height:230px !important;} .hero-section{padding-top:250px;} }
+
+#menu-bar {
+  width: 45px;
+  height: 40px;
+  margin: 30px 0 20px 20px;
+  cursor: pointer;
+}
+
+.bar {
+  height: 5px;
+  width: 100%;
+  background-color: #DC052D;
+  display: block;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+#bar1 { transform: translateY(-4px); }
+#bar3 { transform: translateY(4px); }
+
+.nav {
+  transition: 0.3s ease;
+  display: none;
+}
+.nav ul { padding: 0 22px; }
+.nav li { list-style: none; padding: 12px 0; }
+.nav li a { color: white; font-size: 20px; text-decoration: none; }
+.nav li a:hover { font-weight: bold; }
+
+.menu-bg, #menu {
+  top: 15px; /* Ajustamos la posición vertical */
+  right: 20px; /* Lo movemos a la derecha */
+  position: fixed; /* Usamos fixed para que se posicione relativo a la ventana */
+}
+
+.menu-bg {
+  z-index: 1499;
+  width: 0;
+  height: 0;
+  margin: 0; /* Reseteamos el margen */
+  background: radial-gradient(circle, #DC052D, #c52b38);
+  border-radius: 50%;
+  transition: 0.3s ease;
+}
+
+.change { display: block; }
+.change .bar { background-color: white; }
+.change #bar1 { transform: translateY(4px) rotateZ(-45deg); }
+.change #bar2 { opacity: 0; }
+.change #bar3 { transform: translateY(-6px) rotateZ(45deg); }
+.change-bg { width: 125vw; height: 150vw; transform: translate(50%, -25%); }
+
+@media (min-width:901px){ #menu{display:none;} .custom-logo{height:220px !important;} }
+@media (max-width:900px){ #menu{display:block;} .main-menu{display:none;} .site-header{padding:6px 0 !important;background:rgba(255,255,255,0.55)!important;} .custom-logo{height:230px !important;} .hero-section{padding-top:250px;} }
 @media (max-width:600px){
     .custom-logo-link .custom-logo {height: 100px !important;} /* Reducimos el logo en móviles */
     .hero-section{padding-top:225px;} 

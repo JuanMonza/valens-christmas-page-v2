@@ -9,17 +9,22 @@ export function renderNavbar() {
           </a>
         </div>
         <nav id="site-navigation" class="main-navigation" aria-label="Menú principal">
-          <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="primary-menu" class="menu-toggle">
-            <span class="hamburger"></span>
-          </button>
-          <ul id="primary-menu" class="main-menu" role="menubar">
-            <li role="none"><a role="menuitem" href="index.html">Inicio</a></li>
-            <li role="none"><a role="menuitem" href="tendencias.html">Tendencias</a></li>
-            <li role="none"><a role="menuitem" href="colecciones.html">Colecciones</a></li>
-            <li role="none"><a role="menuitem" href="inspiracion.html">Inspiración</a></li>
-            <li role="none"><a role="menuitem" href="calculadora.html">Calculadora</a></li>
-            <li role="none"><a role="menuitem" href="encuentranos.html">Encuéntranos</a></li>
-          </ul>
+          <div id="menu">
+            <div id="menu-bar" onclick="menuOnClick()">
+              <div id="bar1" class="bar"></div>
+              <div id="bar2" class="bar"></div>
+              <div id="bar3" class="bar"></div>
+            </div>
+            <ul class="nav" id="nav">
+              <li><a href="index.html">Inicio</a></li>
+              <li><a href="tendencias.html">Tendencias</a></li>
+              <li><a href="colecciones.html">Colecciones</a></li>
+              <li><a href="inspiracion.html">Inspiración</a></li>
+              <li><a href="calculadora.html">Calculadora</a></li>
+              <li><a href="encuentranos.html">Encuéntranos</a></li>
+            </ul>
+          </div>
+          <div class="menu-bg" id="menu-bg"></div>
         </nav>
       </div>
     </header>
@@ -27,6 +32,13 @@ export function renderNavbar() {
 }
 
 export function navbarScript() {
+
+  // Hacemos la función global para que el `onclick` funcione
+  window.menuOnClick = function() {
+    document.getElementById("menu-bar").classList.toggle("change");
+    document.getElementById("nav").classList.toggle("change");
+    document.getElementById("menu-bg").classList.toggle("change-bg");
+  }
 
   // Ejemplo:
   // <div id="navbar-container"></div>
@@ -38,28 +50,6 @@ export function navbarScript() {
 
   // Navbar hamburguesa y efectos visuales
   document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.getElementById('menu-toggle');
-    const mainMenu = document.getElementById('primary-menu');
-
-    if (menuToggle && mainMenu) {
-      // Función para gestionar el menú móvil
-      const handleMobileMenu = () => {
-        // Nos aseguramos de que el menú tenga la clase 'mobile' para las animaciones
-        mainMenu.classList.add('mobile');
-
-        // Alternamos la clase 'active' en el botón para la animación (X)
-        menuToggle.classList.toggle('active');
-        // Alternamos la clase 'open' en el menú para mostrarlo/ocultarlo
-        mainMenu.classList.toggle('open');
-        
-        // Evitamos que se pueda hacer scroll en el body cuando el menú está abierto
-        document.body.style.overflow = mainMenu.classList.contains('open') ? 'hidden' : '';
-      };
-
-      // Asignamos el evento al botón
-      menuToggle.addEventListener('click', handleMobileMenu);
-    }
-
     // Lógica para la cabecera de la página de inicio (solo scroll, sin ocultar)
     if (document.body.classList.contains('home')) {
       const header = document.getElementById('masthead');
