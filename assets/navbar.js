@@ -38,84 +38,28 @@ export function navbarScript() {
 
   // Navbar hamburguesa y efectos visuales
   document.addEventListener('DOMContentLoaded', function() {
-    var menuToggle = document.getElementById('menu-toggle');
-    var mainMenu = document.getElementById('primary-menu');
-    var hamburger = menuToggle.querySelector('.hamburger');
-    
-    // Animación hamburguesa
-    hamburger.innerHTML = '<span></span><span></span><span></span>';
-    hamburger.style.display = 'inline-block';
-    hamburger.style.width = '28px';
-    hamburger.style.height = '22px';
-    hamburger.style.position = 'relative';
-    Array.from(hamburger.children).forEach(function(bar,i){
-      bar.style.position = 'absolute';
-      bar.style.left = '0';
-      bar.style.width = '100%';
-      bar.style.height = '4px';
-      bar.style.background = '#fff'; // Color blanco para contraste
-      bar.style.borderRadius = '2px';
-      bar.style.transition = 'all .4s';
-      bar.style.top = (i*9)+'px';
-    });
+    const menuToggle = document.getElementById('menu-toggle');
+    const mainMenu = document.getElementById('primary-menu');
 
-    menuToggle.addEventListener('click', function() {
-      const isOpen = mainMenu.classList.toggle('open');
-      menuToggle.setAttribute('aria-expanded', isOpen);
-      
-      if (isOpen) {
-        // Animación hamburguesa abierta
-        hamburger.children[0].style.transform = 'translateY(9px) rotate(45deg)';
-        hamburger.children[1].style.opacity = '0';
-        hamburger.children[2].style.transform = 'translateY(-9px) rotate(-45deg)';
-      } else {
-        // Animación hamburguesa cerrada
-        hamburger.children[0].style.transform = '';
-        hamburger.children[1].style.opacity = '1';
-        hamburger.children[2].style.transform = '';
-      }
-    });
-
-    // Gestionar visibilidad al cambiar tamaño de ventana
-    window.addEventListener('resize', function() {
-      if (window.innerWidth > 900) {
-        mainMenu.classList.remove('open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        hamburger.children[0].style.transform = '';
-        hamburger.children[1].style.opacity = '1';
-        hamburger.children[2].style.transform = '';
-      }
-    });
-
-    // Cerrar menú al hacer clic en un enlace
-    var menuLinks = mainMenu.querySelectorAll('a');
-    menuLinks.forEach(function(link){
-      link.addEventListener('click', function(){
-        if(window.innerWidth <= 900){
-          mainMenu.classList.remove('open');
-          menuToggle.setAttribute('aria-expanded', 'false');
-          hamburger.children[0].style.transform = '';
-          hamburger.children[1].style.opacity = '1';
-          hamburger.children[2].style.transform = '';
-        }
+    if (menuToggle && mainMenu) {
+      menuToggle.addEventListener('click', function() {
+        document.body.classList.toggle('menu-open');
       });
-    });
+    }
 
-    // Lógica para la cabecera de la página de inicio
+    // Lógica para la cabecera de la página de inicio (solo scroll, sin ocultar)
     if (document.body.classList.contains('home')) {
       const header = document.getElementById('masthead');
-      
-      // Asignar clase 'home' al header para estilos específicos
-      header.classList.add('home');
-
-      // Cambiar el fondo del header al hacer scroll
-      window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 50) {
-          header.classList.add('header-scrolled');
-        } else {
-          header.classList.remove('header-scrolled');
-        }
-      }, false);
+      if(header) {
+        header.classList.add('home');
+        window.addEventListener('scroll', function() {
+          if (window.pageYOffset > 50) {
+            header.classList.add('header-scrolled');
+          } else {
+            header.classList.remove('header-scrolled');
+          }
+        }, false);
+      }
     }
   });
 }
