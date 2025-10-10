@@ -85,50 +85,44 @@
             </section>
 
             <div class="main-content-area">
-                <section id="categorias" class="content-section fade-in animated-section">
-                    <h2>Explora nuestras categorías</h2>
+                <section id="categorias" class="content-section fade-in animated-section">                    
+                    <a href="colecciones.html" class="full-section-link"><h2>Explora nuestras categorías</h2></a>
                     <p class="section-subtitle">Descubre las colecciones y
                         tendencias que tenemos para ti. Cada categoría está pensada para llenar tu hogar de magia
                         navideña.</p>
-                    <a href="colecciones.html" class="full-section-link">
-                        <div class="section-images">
-                            <img src="medios/WhatsApp Image 2025-10-07 at 15.56.33.jpeg" alt="Categoría 1"
-                                class="section-img">
-                            <img src="medios/WhatsApp Image 2025-10-07 at 15.56.33 (1).jpeg" alt="Categoría 2"
-                                class="section-img">
-                        </div>
-                    </a>
+                    <div class="section-images">
+                        <img src="medios/WhatsApp Image 2025-10-07 at 15.56.33.jpeg" alt="Categoría 1"
+                            class="section-img lightbox-trigger">
+                        <img src="medios/WhatsApp Image 2025-10-07 at 15.56.33 (1).jpeg" alt="Categoría 2"
+                            class="section-img lightbox-trigger">
+                    </div>
                 </section>
 
-                <a href="tendencias.html" class="full-section-link">
-                    <section id="magia" class="content-section fade-in">
-                        <h2>Toda la Magia y el amor de la navidad</h2>
-                        <p class="section-description">
-                            Con emoción te presentamos las nuevas colecciones navideñas 2025. En cada pieza encontrarás un
-                            destello de felicidad diseñado para llenar tu hogar con la chispa de las fiestas. Con
-                            <strong>Valens Christmas</strong>, no solo llevas decoración, llevas un pedacito de alegría y
-                            amor que hará que esta temporada sea inolvidable.
-                        </p>
-                        <div class="section-images">
-                            <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57 (1).jpeg" alt="Navidad 1"
-                                class="section-img">
-                            <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57 (2).jpeg" alt="Navidad 2"
-                                class="section-img">
-                        </div>
-                    </section>
-                </a>
+                <section id="magia" class="content-section fade-in">
+                    <a href="tendencias.html" class="full-section-link"><h2>Toda la Magia y el amor de la navidad</h2></a>
+                    <p class="section-description">
+                        Con emoción te presentamos las nuevas colecciones navideñas 2025. En cada pieza encontrarás un
+                        destello de felicidad diseñado para llenar tu hogar con la chispa de las fiestas. Con
+                        <strong>Valens Christmas</strong>, no solo llevas decoración, llevas un pedacito de alegría y
+                        amor que hará que esta temporada sea inolvidable.
+                    </p>
+                    <div class="section-images">
+                        <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57 (1).jpeg" alt="Navidad 1"
+                            class="section-img lightbox-trigger">
+                        <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57 (2).jpeg" alt="Navidad 2"
+                            class="section-img lightbox-trigger">
+                    </div>
+                </section>
 
                 <section id="productos-destacados" class="content-section fade-in">
-                    <h2>Productos Destacados</h2>
+                    <a href="inspiracion.html" class="full-section-link"><h2>Productos Destacados</h2></a>
                     <p>Los favoritos de esta temporada para un hogar lleno de magia.</p>
-                    <a href="inspiracion.html" class="full-section-link">
-                        <div class="section-images">
-                            <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57 (3).jpeg" alt="Producto 1"
-                                class="section-img">
-                            <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57.jpeg" alt="Producto 2"
-                                class="section-img">
-                        </div>
-                    </a>
+                    <div class="section-images">
+                        <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57 (3).jpeg" alt="Producto 1"
+                            class="section-img lightbox-trigger">
+                        <img src="medios/WhatsApp Image 2025-10-07 at 15.55.57.jpeg" alt="Producto 2"
+                            class="section-img lightbox-trigger">
+                    </div>
                 </section>
 
 
@@ -184,20 +178,20 @@
                 <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" style="--shadow-color: #ff0000;">
             </a>
         </div>
-        <!-- Instagram Embeds -->
+        <!-- Instagram Embeds Originales -->
         <div class="instagram-feed-grid">
             <blockquote
               class="instagram-media"
-              data-instgrm-permalink="https://www.instagram.com/p/DPWYEqaEQg_/"
+              data-instgrm-permalink="https://www.instagram.com/p/DH6EduvO0Pa/"
               data-instgrm-version="14"
             ></blockquote>
             <blockquote
               class="instagram-media"
-              data-instgrm-permalink="https://www.instagram.com/p/DN8cElVEZO7/"
+              data-instgrm-permalink="https://www.instagram.com/p/DCUEJl4xOmo/"
               data-instgrm-version="14"
             ></blockquote>
         </div>
-        <!-- Fin Instagram Embeds -->
+        <!-- Fin Instagram Embeds Originales -->
     </section>
 
         <!-- SECCIÓN ENCUÉNTRANOS Y COMERCIALIZA (MOVIDA AQUÍ) -->
@@ -224,6 +218,17 @@
         document.getElementById('footer').innerHTML = renderFooter();
         navbarScript();
     </script>
+
+    <!-- Lightbox HTML Structure -->
+    <div id="lightbox-overlay" class="lightbox-overlay">
+        <div class="lightbox-content">
+            <img src="" alt="" class="lightbox-image">
+            <button class="lightbox-close">&times;</button>
+            <div class="lightbox-caption"></div>
+        </div>
+    </div>
+    <!-- End Lightbox HTML Structure -->
+
     <!-- SCRIPTS CONSOLIDADOS -->
     <script src="assets/main-page.js"></script>
     <script src="assets/music-persistence.js"></script>

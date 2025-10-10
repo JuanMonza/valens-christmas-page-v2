@@ -46,5 +46,5 @@ export function renderFooter() {
             </p>
         </div>
     </footer>
-  `;
+    `;
 }

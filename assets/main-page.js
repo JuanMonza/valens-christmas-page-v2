@@ -142,4 +142,40 @@ document.addEventListener('DOMContentLoaded', function () {
         // new Swiper('#productos-swiper', commonConfig);
         // new Swiper('#categorias-swiper', commonConfig);
     })();
+
+    // ================== LIGHTBOX PARA IMÁGENES DE SECCIÓN ==================
+    (function initLightbox() {
+        const lightboxOverlay = document.getElementById('lightbox-overlay');
+        const lightboxImage = document.querySelector('.lightbox-image');
+        const lightboxClose = document.querySelector('.lightbox-close');
+        const lightboxCaption = document.querySelector('.lightbox-caption');
+        const lightboxTriggers = document.querySelectorAll('.lightbox-trigger');
+
+        if (!lightboxOverlay || !lightboxImage || !lightboxClose || !lightboxTriggers.length) {
+            console.warn("Elementos del lightbox no encontrados. El lightbox no se iniciará.");
+            return;
+        }
+
+        lightboxTriggers.forEach(trigger => {
+            trigger.addEventListener('click', function (e) {
+                e.preventDefault(); // Evita cualquier acción por defecto si la imagen estuviera dentro de un enlace
+                lightboxImage.src = this.src;
+                lightboxImage.alt = this.alt;
+                lightboxCaption.textContent = this.alt; // Usa el alt como caption
+                lightboxOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Evita el scroll del body
+            });
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxOverlay.addEventListener('click', function (e) {
+            if (e.target === lightboxOverlay) { // Cierra solo si se hace clic en el overlay, no en la imagen
+                closeLightbox();
+            }
+        });
+        function closeLightbox() {
+            lightboxOverlay.classList.remove('active');
+            document.body.style.overflow = ''; // Restaura el scroll del body
+        }
+    })();
 });
