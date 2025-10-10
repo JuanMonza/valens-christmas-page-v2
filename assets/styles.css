@@ -1022,9 +1022,13 @@ body.home-page {
 .change #bar1 { transform: translateY(4px) rotateZ(-45deg); }
 .change #bar2 { opacity: 0; }
 .change #bar3 { transform: translateY(-6px) rotateZ(45deg); }
-.change-bg { width: 125vw; height: 150vw; transform: translate(50%, -25%); }
 
-@media (min-width:901px){ #menu{display:none;} .custom-logo{height:120px !important;} }
+/* Ajustamos el tamaño y la transformación para que se estire hacia abajo */
+.change-bg {
+    width: 120vw; height: 77vh; transform: translate(35%, -10.5%);
+}
+
+@media (min-width:901px){ #menu, .menu-bg {display:none;} .custom-logo{height:120px !important;} }
 @media (max-width:900px){ 
     #menu{display:block;} 
     .main-menu{display:none;} 

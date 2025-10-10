@@ -11,12 +11,12 @@ export function renderNavbar() {
         <nav id="site-navigation" class="main-navigation" aria-label="Menú principal">
           <!-- Menú para Escritorio -->
           <ul class="main-menu">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="tendencias.html">Tendencias</a></li>
-            <li><a href="colecciones.html">Colecciones</a></li>
-            <li><a href="inspiracion.html">Inspiración</a></li>
-            <li><a href="calculadora.html">Calculadora</a></li>
-            <li><a href="encuentranos.html">Encuéntranos</a></li>
+            <li><a href="index.html#inicio">Inicio</a></li>
+            <li><a href="index.html#categorias">Tendencias</a></li>
+            <li><a href="index.html#magia">Colecciones</a></li>
+            <li><a href="index.html#productos-destacados">Inspiración</a></li>
+            <li><a href="index.html#sobre-nosotros">Nuestra Empresa</a></li>
+            <li><a href="index.html#encuentranos-comercializa">Encuéntranos</a></li>
           </ul>
           <!-- Menú para Móvil -->
           <div id="menu">
@@ -26,12 +26,12 @@ export function renderNavbar() {
               <div id="bar3" class="bar"></div>
             </div>
             <ul class="nav" id="nav">
-              <li><a href="index.html"><i class="fas fa-sleigh"></i> Inicio</a></li>
-              <li><a href="tendencias.html"><i class="fas fa-star"></i> Tendencias</a></li>
-              <li><a href="colecciones.html"><i class="fas fa-gifts"></i> Colecciones</a></li>
-              <li><a href="inspiracion.html"><i class="fas fa-lightbulb"></i> Inspiración</a></li>
-              <li><a href="calculadora.html"><i class="fas fa-tree"></i> Calculadora</a></li>
-              <li><a href="encuentranos.html"><i class="fas fa-map-marker-alt"></i> Encuéntranos</a></li>
+              <li><a href="index.html#inicio"><i class="fas fa-sleigh"></i> Inicio</a></li>
+              <li><a href="index.html#categorias"><i class="fas fa-star"></i> Tendencias</a></li>
+              <li><a href="index.html#magia"><i class="fas fa-gifts"></i> Colecciones</a></li>
+              <li><a href="index.html#productos-destacados"><i class="fas fa-lightbulb"></i> Inspiración</a></li>
+              <li><a href="index.html#sobre-nosotros"><i class="fas fa-building"></i> Nuestra Empresa</a></li>
+              <li><a href="index.html#encuentranos-comercializa"><i class="fas fa-map-marker-alt"></i> Encuéntranos</a></li>
             </ul>
           </div>
           <div class="menu-bg" id="menu-bg"></div>
