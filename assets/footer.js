@@ -41,8 +41,8 @@ export function renderFooter() {
         </div>
         <div class="site-info">
             <p>
-                &copy; 2025 <strong>Valens Christmas</strong> | Todos los derechos reservados.<br>
-                Desarrollado por <a href="https://github.com/JuanMonza" target="_blank" rel="noopener">Juan Monsalve</a>
+                &copy; 2025 <strong>Valent's Christmas</strong> | Todos los derechos reservados.<br>
+                Desarrollado por <a href="https://github.com/JuanMonza" target="_blank" rel="noopener">Juan Monsalve</a> | Versión 2.5.3
             </p>
         </div>
     </footer>
