@@ -15,7 +15,7 @@ export function renderNavbar() {
             <li><a href="index.html#categorias">Tendencias</a></li>
             <li><a href="index.html#magia">Colecciones</a></li>
             <li><a href="index.html#productos-destacados">Inspiración</a></li>
-            <li><a href="index.html#sobre-nosotros">Nuestra Empresa</a></li>
+            <li><a href="index.html#sobre-nosotros">Calculadora</a></li>
             <li><a href="index.html#encuentranos-comercializa">Encuéntranos</a></li>
           </ul>
           <!-- Menú para Móvil -->
