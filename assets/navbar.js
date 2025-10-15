@@ -50,6 +50,16 @@ export function navbarScript() {
     document.getElementById("menu-bg").classList.toggle("change-bg");
   }
 
+  // Cierra el menú móvil al hacer clic en un enlace
+  document.querySelectorAll('#nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      // Solo cierra si el menú está abierto
+      if (document.getElementById("menu-bar").classList.contains("change")) {
+        window.menuOnClick();
+      }
+    });
+  });
+
   // Ejemplo:
   // <div id="navbar-container"></div>
   // <script src="assets/navbar.js"></script>

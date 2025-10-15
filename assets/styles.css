@@ -514,6 +514,12 @@ body.home-page {
     backdrop-filter: blur(5px);
 }
 
+/* Ajuste para que el header fijo no tape los títulos al navegar con anclas */
+.content-section[id] {
+    scroll-margin-top: 100px; /* Ajusta este valor según la altura de tu header */
+}
+
+
 /* Estilo para los subtítulos (el primer párrafo de cada sección) */
 .content-section > p:first-of-type {
     text-align: center;
